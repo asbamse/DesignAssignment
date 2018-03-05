@@ -5,16 +5,14 @@
  */
 package designassignment.dal;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import designassignment.be.Message;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -54,9 +52,15 @@ public class DB_DAO {
 
     Message saveNewMessage(String message) throws DALException {
         try (Connection con = connecter.getConnection()) {
-            String sql = "";
+            String sql = "INSERT INTO Message VALUES (?)";
+            
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(0, message);
+            
+            statement.execute();
+            
+            return new Message(message);
 
-            return null;
         } catch (SQLException ex) {
             throw new DALException(ex.getMessage(), ex.getCause());
         }
