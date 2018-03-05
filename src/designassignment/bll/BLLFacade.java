@@ -6,6 +6,7 @@
 package designassignment.bll;
 
 import designassignment.be.Message;
+import java.util.List;
 
 /**
  *
@@ -19,4 +20,10 @@ public interface BLLFacade
      * @return
      */
     public Message sendMessage(String message) throws BLLException;
+
+    /**
+     * Get a list of all saved messages.
+     * @return a list og message objects
+     */
+    public List<Message> getMessages() throws BLLException;
 }

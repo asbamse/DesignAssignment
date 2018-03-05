@@ -9,8 +9,9 @@ import designassignment.be.Message;
 import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -21,6 +22,7 @@ import javafx.scene.control.ButtonType;
 public class MainModel
 {
     BLLFacade bll;
+    private ObservableList<Message> messages;
 
     /**
      * Main model constructor.
@@ -28,6 +30,13 @@ public class MainModel
     public MainModel()
     {
         this.bll = new BLLManager();
+        messages = FXCollections.observableArrayList();
+        getAllMessages();
+    }
+
+    public ObservableList<Message> getMessages()
+    {
+        return messages;
     }
 
     /**
@@ -39,7 +48,9 @@ public class MainModel
     {
         try
         {
-            return bll.sendMessage(message);
+            Message tmp = bll.sendMessage(message);
+            messages.add(tmp);
+            return tmp;
         }
         catch (BLLException ex)
         {
@@ -47,5 +58,24 @@ public class MainModel
             alert.showAndWait();
             return null;
         }
+    }
+
+    private void getAllMessages()
+    {
+        messages.clear();
+        try
+        {
+            messages.addAll(bll.getMessages());
+        }
+        catch (BLLException ex)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Could not get messages!: " + ex.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
+    public void addListener(ListChangeListener cl)
+    {
+        messages.addListener(cl);
     }
 }

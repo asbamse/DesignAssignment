@@ -32,7 +32,6 @@ public class MainController implements Initializable
     private TextField txtfldMessage;
 
     private MainModel mm;
-    private ObservableList<Message> messages;
 
     /**
      * Initialize window.
@@ -43,8 +42,13 @@ public class MainController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         mm = new MainModel();
-        messages = FXCollections.observableArrayList();
-        lstvwMessages.setItems(messages);
+        lstvwMessages.setItems(mm.getMessages());
+        mm.addListener((c) ->
+        {
+            txtfldMessage.clear();
+            txtfldMessage.requestFocus();
+            lstvwMessages.scrollTo(lstvwMessages.getItems().get(lstvwMessages.getItems().size() - 1));
+        });
 
         // Focus textField on run.
         Platform.runLater(new Runnable()
@@ -64,13 +68,6 @@ public class MainController implements Initializable
     @FXML
     private void handleSend(ActionEvent event)
     {
-        Message tmp = mm.sendMessage(txtfldMessage.getText());
-        if (tmp != null)
-        {
-            messages.add(tmp);
-            txtfldMessage.clear();
-            txtfldMessage.requestFocus();
-            lstvwMessages.scrollTo(tmp);
-        }
+        mm.sendMessage(txtfldMessage.getText());
     }
 }
