@@ -5,8 +5,16 @@
  */
 package designassignment.dal;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import designassignment.be.Message;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,15 +22,44 @@ import java.util.List;
  */
 public class DB_DAO {
 
-    List<Message> getAllMessages() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    DBConnecter connecter;
+
+    public DB_DAO() {
+        connecter = new DBConnecter();
     }
 
-    Message saveNewMessage(String message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    List<Message> getAllMessages() throws DALException {
+        try (Connection con = connecter.getConnection()) {
+            String sql = "SELECT * FROM Message";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            List<Message> messages = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Message message = new Message(rs.getString("Text"));
+
+                messages.add(message);
+
+            }
+
+            return messages;
+
+        } catch (SQLException ex) {
+            throw new DALException(ex.getMessage(), ex.getCause());
+        }
     }
-    
-    
-    
-    
+
+    Message saveNewMessage(String message) throws DALException {
+        try (Connection con = connecter.getConnection()) {
+            String sql = "";
+
+            return null;
+        } catch (SQLException ex) {
+            throw new DALException(ex.getMessage(), ex.getCause());
+        }
+    }
+
 }
