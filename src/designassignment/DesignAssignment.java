@@ -18,6 +18,11 @@ import javafx.stage.Stage;
 public class DesignAssignment extends Application
 {
 
+    /**
+     * Start application.
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception
     {

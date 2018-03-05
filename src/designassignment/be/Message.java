@@ -13,16 +13,28 @@ public class Message
 {
     private String message;
 
+    /**
+     * Message constructor.
+     * @param message
+     */
     public Message(String message)
     {
         this.message = message;
     }
 
+    /**
+     * Get message.
+     * @return
+     */
     public String getMessage()
     {
         return message;
     }
 
+    /**
+     * Message to String.
+     * @return
+     */
     @Override
     public String toString()
     {

@@ -33,6 +33,11 @@ public class MainController implements Initializable
     private MainModel mm;
     private ObservableList<Message> messages;
 
+    /**
+     * Initialize window.
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
@@ -41,6 +46,10 @@ public class MainController implements Initializable
         lstvwMessages.setItems(messages);
     }
 
+    /**
+     * Handles press on send button.
+     * @param event
+     */
     @FXML
     private void handleSend(ActionEvent event)
     {

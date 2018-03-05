@@ -3,35 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model;
+package designassignment.dal;
 
 import designassignment.be.Message;
-import designassignment.bll.BLLFacade;
-import designassignment.bll.BLLManager;
 
 /**
  *
  * @author Asbamz
  */
-public class MainModel
+public class DALManager implements DALFacade
 {
-    BLLFacade bll;
-
     /**
-     * Main model constructor.
-     */
-    public MainModel()
-    {
-        this.bll = new BLLManager();
-    }
-
-    /**
-     * Send message
+     * Send message.
      * @param message
      * @return
      */
+    @Override
     public Message sendMessage(String message)
     {
         return new Message(message);
     }
+
 }
