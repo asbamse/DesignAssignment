@@ -14,20 +14,22 @@ import java.util.List;
  */
 public class DALManager implements DALFacade
 {
+    
+    DB_DAO dbdao = new DB_DAO();
+    
     /**
      * Send message.
      * @param message
      * @return
      */
     @Override
-    public Message sendMessage(String message) throws DALException
-    {
-        return new Message(message);
+    public Message sendMessage(String message) throws DALException{
+        return dbdao.saveNewMessage(message);
     }
 
     @Override
     public List<Message> getMessages() throws DALException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dbdao.getAllMessages();
     }
 
 }
