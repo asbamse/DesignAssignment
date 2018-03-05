@@ -9,6 +9,7 @@ import designassignment.be.Message;
 import designassignment.gui.model.MainModel;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,6 +45,16 @@ public class MainController implements Initializable
         mm = new MainModel();
         messages = FXCollections.observableArrayList();
         lstvwMessages.setItems(messages);
+
+        // Focus textField on run.
+        Platform.runLater(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                txtfldMessage.requestFocus();
+            }
+        });
     }
 
     /**
@@ -54,5 +65,7 @@ public class MainController implements Initializable
     private void handleSend(ActionEvent event)
     {
         messages.add(mm.sendMessage(txtfldMessage.getText()));
+        txtfldMessage.clear();
+        txtfldMessage.requestFocus();
     }
 }
