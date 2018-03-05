@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import java.util.List;
 
 /**
  *
@@ -18,5 +19,12 @@ public interface DALFacade
      * @param message
      * @return
      */
-    public Message sendMessage(String message);
+    public Message sendMessage(String message) throws DALException;
+    
+    
+    /**
+     * get a list of all saved messages
+     * @return a list og message objects
+     */
+    public List<Message> getMessages();
 }
