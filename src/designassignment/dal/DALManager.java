@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,11 @@ public class DALManager implements DALFacade
     public Message sendMessage(String message)
     {
         return new Message(message);
+    }
+
+    @Override
+    public List<Message> getMessages() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
