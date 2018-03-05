@@ -65,9 +65,12 @@ public class MainController implements Initializable
     private void handleSend(ActionEvent event)
     {
         Message tmp = mm.sendMessage(txtfldMessage.getText());
-        messages.add(tmp);
-        txtfldMessage.clear();
-        txtfldMessage.requestFocus();
-        lstvwMessages.scrollTo(tmp);
+        if (tmp != null)
+        {
+            messages.add(tmp);
+            txtfldMessage.clear();
+            txtfldMessage.requestFocus();
+            lstvwMessages.scrollTo(tmp);
+        }
     }
 }

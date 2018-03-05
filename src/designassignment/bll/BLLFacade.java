@@ -18,5 +18,5 @@ public interface BLLFacade
      * @param message
      * @return
      */
-    public Message sendMessage(String message);
+    public Message sendMessage(String message) throws BLLException;
 }

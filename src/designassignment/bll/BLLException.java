@@ -3,28 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.dal;
+package designassignment.bll;
 
 /**
  *
- * @author janvanzetten
+ * @author Asbamz
  */
-public class DALException extends Exception
+public class BLLException extends Exception
 {
-
-    public DALException(String message)
+    public BLLException(String message)
     {
         super(message);
     }
 
-    public DALException(String message, Throwable cause)
+    public BLLException(String message, Throwable cause)
     {
         super(message, cause);
     }
 
-    public DALException(Throwable cause)
+    public BLLException(Throwable cause)
     {
         super(cause);
     }
-
 }

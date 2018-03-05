@@ -6,6 +6,7 @@
 package designassignment.bll;
 
 import designassignment.be.Message;
+import designassignment.dal.DALException;
 import designassignment.dal.DALFacade;
 import designassignment.dal.DALManager;
 
@@ -31,9 +32,16 @@ public class BLLManager implements BLLFacade
      * @return
      */
     @Override
-    public Message sendMessage(String message)
+    public Message sendMessage(String message) throws BLLException
     {
-        return dal.sendMessage(message);
+        try
+        {
+            return dal.sendMessage(message);
+        }
+        catch (DALException ex)
+        {
+            throw new BLLException(ex.getMessage(), ex.getCause());
+        }
     }
 
 }

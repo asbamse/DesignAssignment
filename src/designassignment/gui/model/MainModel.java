@@ -6,8 +6,13 @@
 package designassignment.gui.model;
 
 import designassignment.be.Message;
+import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -32,6 +37,15 @@ public class MainModel
      */
     public Message sendMessage(String message)
     {
-        return new Message(message);
+        try
+        {
+            return bll.sendMessage(message);
+        }
+        catch (BLLException ex)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Could not send message!: " + ex.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+            return null;
+        }
     }
 }
