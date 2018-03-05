@@ -12,6 +12,7 @@ package designassignment.be;
 public class Message
 {
     private String message;
+    private int id;
 
     /**
      * Message constructor.
@@ -20,6 +21,16 @@ public class Message
     public Message(String message)
     {
         this.message = message;
+    }
+    
+    /**
+     * Message constructor.
+     * @param message
+     */
+    public Message(String message, int id)
+    {
+        this.message = message;
+        this.id = id;
     }
 
     /**
