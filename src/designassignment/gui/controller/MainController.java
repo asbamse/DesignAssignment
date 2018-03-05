@@ -64,8 +64,10 @@ public class MainController implements Initializable
     @FXML
     private void handleSend(ActionEvent event)
     {
-        messages.add(mm.sendMessage(txtfldMessage.getText()));
+        Message tmp = mm.sendMessage(txtfldMessage.getText());
+        messages.add(tmp);
         txtfldMessage.clear();
         txtfldMessage.requestFocus();
+        lstvwMessages.scrollTo(tmp);
     }
 }
