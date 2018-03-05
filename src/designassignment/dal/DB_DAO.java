@@ -28,8 +28,9 @@ public class DB_DAO {
 
     /**
      * get all the messages from the database
+     *
      * @return
-     * @throws DALException 
+     * @throws DALException
      */
     List<Message> getAllMessages() throws DALException {
         try (Connection con = connecter.getConnection()) {
@@ -55,23 +56,28 @@ public class DB_DAO {
         }
     }
 
-    
     /**
      * add a new message to the database
+     *
      * @param message
-     * @return if there is no exeption it will return a new message object with the given text
-     * @throws DALException 
+     * @return if there is no exeption it will return a new message object with
+     * the given text
+     * @throws DALException
      */
     Message saveNewMessage(String message) throws DALException {
         try (Connection con = connecter.getConnection()) {
             String sql = "INSERT INTO Message VALUES (?)";
-            
-            PreparedStatement statement = con.prepareStatement(sql);
+
+            PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, message);
-            
+
             statement.execute();
-            
-            return new Message(message);
+
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+            int id = rs.getInt("Id");
+
+            return new Message(message, id);
 
         } catch (SQLException ex) {
             throw new DALException(ex.getMessage(), ex.getCause());
