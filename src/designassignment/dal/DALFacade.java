@@ -18,6 +18,7 @@ public interface DALFacade
      * Send message.
      * @param message
      * @return
+     * @throws designassignment.dal.DALException
      */
     public Message sendMessage(String message) throws DALException;
     
@@ -26,5 +27,5 @@ public interface DALFacade
      * get a list of all saved messages
      * @return a list og message objects
      */
-    public List<Message> getMessages();
+    public List<Message> getMessages() throws DALException;
 }

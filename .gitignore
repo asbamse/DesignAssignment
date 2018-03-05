@@ -97,5 +97,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#lib folder
+!/DesignAssignment/lib/*
+
 
 # End of https://www.gitignore.io/api/java,macos,windows,netbeans,linux
