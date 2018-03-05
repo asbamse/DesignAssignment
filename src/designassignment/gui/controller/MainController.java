@@ -5,6 +5,8 @@
  */
 package designassignment.gui.controller;
 
+import designassignment.be.Message;
+import designassignment.gui.model.MainModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -24,15 +26,17 @@ public class MainController implements Initializable
 {
     private Label label;
     @FXML
-    private ListView<String> lstvwMessages;
+    private ListView<Message> lstvwMessages;
     @FXML
     private TextField txtfldMessage;
 
-    private ObservableList<String> messages;
+    private MainModel mm;
+    private ObservableList<Message> messages;
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        mm = new MainModel();
         messages = FXCollections.observableArrayList();
         lstvwMessages.setItems(messages);
     }
@@ -40,6 +44,6 @@ public class MainController implements Initializable
     @FXML
     private void handleSend(ActionEvent event)
     {
-        messages.add(txtfldMessage.getText());
+        messages.add(mm.sendMessage(txtfldMessage.getText()));
     }
 }
