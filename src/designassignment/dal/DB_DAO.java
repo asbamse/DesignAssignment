@@ -67,7 +67,7 @@ public class DB_DAO {
             String sql = "INSERT INTO Message VALUES (?)";
             
             PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(0, message);
+            statement.setString(1, message);
             
             statement.execute();
             
