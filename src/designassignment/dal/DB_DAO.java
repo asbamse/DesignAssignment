@@ -26,6 +26,11 @@ public class DB_DAO {
         connecter = new DBConnecter();
     }
 
+    /**
+     * get all the messages from the database
+     * @return
+     * @throws DALException 
+     */
     List<Message> getAllMessages() throws DALException {
         try (Connection con = connecter.getConnection()) {
             String sql = "SELECT * FROM Message";
@@ -50,6 +55,13 @@ public class DB_DAO {
         }
     }
 
+    
+    /**
+     * add a new message to the database
+     * @param message
+     * @return if there is no exeption it will return a new message object with the given text
+     * @throws DALException 
+     */
     Message saveNewMessage(String message) throws DALException {
         try (Connection con = connecter.getConnection()) {
             String sql = "INSERT INTO Message VALUES (?)";
