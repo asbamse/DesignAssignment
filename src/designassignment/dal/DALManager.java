@@ -20,13 +20,13 @@ public class DALManager implements DALFacade
      * @return
      */
     @Override
-    public Message sendMessage(String message)
+    public Message sendMessage(String message) throws DALException
     {
         return new Message(message);
     }
 
     @Override
-    public List<Message> getMessages() {
+    public List<Message> getMessages() throws DALException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
