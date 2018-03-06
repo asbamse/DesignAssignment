@@ -15,9 +15,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -46,40 +49,6 @@ public class MainController implements Initializable
     {
         mm = new MainModel();
         lstvwMessages.setItems(mm.getMessages());
-        lstvwMessages.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>()
-        {
-            @Override
-            public ListCell<Message> call(ListView<Message> param)
-            {
-                ListCell<Message> cell = new ListCell<Message>()
-                {
-                    private Text text;
-
-                    @Override
-                    protected void updateItem(Message item, boolean empty)
-                    {
-                        super.updateItem(item, empty);
-                        if (item != null)
-                        {
-                            text = new Text(item.getMessage());
-                            text.setWrappingWidth(lstvwMessages.getWidth() - 35);
-                            setGraphic(text);
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-
-        lstvwMessages.widthProperty().addListener((observable, oldValue, newValue) ->
-        {
-            lstvwMessages.refresh();
-        });
-
-        mm.addListener((c) ->
-        {
-            onUpdate();
-        });
 
         // Focus textField on run.
         Platform.runLater(new Runnable()
@@ -87,6 +56,62 @@ public class MainController implements Initializable
             @Override
             public void run()
             {
+                double scrollbarWidth = 50;
+                for (Node node : lstvwMessages.lookupAll(".scroll-bar"))
+                {
+                    if (node instanceof ScrollBar)
+                    {
+                        ScrollBar bar = (ScrollBar) node;
+                        if (bar.getOrientation().equals(Orientation.VERTICAL))
+                        {
+                            scrollbarWidth = bar.getWidth();
+                        }
+                        else if (bar.getOrientation().equals(Orientation.HORIZONTAL))
+                        {
+                            bar.setDisable(true);
+                        }
+                    }
+                }
+
+                System.out.println(lstvwMessages.getWidth());
+                System.out.println(scrollbarWidth);
+                final double finalScrollbarWidth = scrollbarWidth;
+                lstvwMessages.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>()
+                {
+                    @Override
+                    public ListCell<Message> call(ListView<Message> param)
+                    {
+                        ListCell<Message> cell = new ListCell<Message>()
+                        {
+                            private Text text;
+                            private double scrollWidth = finalScrollbarWidth * 2.2;
+
+                            @Override
+                            protected void updateItem(Message item, boolean empty)
+                            {
+                                super.updateItem(item, empty);
+                                if (item != null)
+                                {
+                                    text = new Text(item.getMessage());
+                                    text.setWrappingWidth(lstvwMessages.getWidth() - scrollWidth);
+                                    setGraphic(text);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                });
+
+                lstvwMessages.widthProperty().addListener((observable, oldValue, newValue) ->
+                {
+                    lstvwMessages.refresh();
+                });
+
+                mm.addListener((c) ->
+                {
+                    onUpdate();
+                });
+
                 onUpdate();
             }
         });

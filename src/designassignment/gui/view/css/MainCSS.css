@@ -24,21 +24,6 @@ and open the template in the editor.
     -fx-background-insets: 1px;
 }
 
-.list-cell {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-}
-
-.list-cell:selected {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-}
-
-.list-cell:focused {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-}
-
 .scroll-bar:horizontal, .scroll-bar:vertical
 {
     -fx-background-color: #d9d9d9;
