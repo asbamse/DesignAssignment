@@ -29,7 +29,7 @@ public class MainModel
      */
     public MainModel()
     {
-        this.bll = new BLLManager();
+        this.bll = BLLManager.getInstance();
         messages = FXCollections.observableArrayList();
         getAllMessages();
     }
