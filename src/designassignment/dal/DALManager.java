@@ -14,8 +14,27 @@ import java.util.List;
  */
 public class DALManager implements DALFacade
 {
-    
     DB_DAO dbdao = new DB_DAO();
+    
+    private static DALManager instance;
+    
+    
+    /**
+     * Singleton method.
+     * @return 
+     */
+    public static DALManager getInstance() {
+        if (instance == null) {
+            instance = new DALManager();
+        }
+        return instance;
+    }
+
+    /**
+     * Constructor.
+     */
+    private DALManager() {
+    }
     
     /**
      * Send message.
@@ -27,6 +46,11 @@ public class DALManager implements DALFacade
         return dbdao.saveNewMessage(message);
     }
 
+    /**
+     * Get message.
+     * @return
+     * @throws DALException 
+     */
     @Override
     public List<Message> getMessages() throws DALException {
         return dbdao.getAllMessages();
