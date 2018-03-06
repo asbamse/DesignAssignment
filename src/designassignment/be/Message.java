@@ -5,14 +5,23 @@
  */
 package designassignment.be;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Asbamz
  */
+
+@XmlRootElement
 public class Message
 {
     private String message;
     private int id;
+
+    public Message() {
+    }
 
     /**
      * Message constructor.
@@ -51,4 +60,16 @@ public class Message
     {
         return message;
     }
+
+    @XmlElement
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    
+    @XmlAttribute
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 }

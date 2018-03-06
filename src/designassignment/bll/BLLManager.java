@@ -9,6 +9,7 @@ import designassignment.be.Message;
 import designassignment.dal.DALException;
 import designassignment.dal.DALFacade;
 import designassignment.dal.DALManager;
+import designassignment.dal.DALManagerXML;
 import java.util.List;
 
 /**
