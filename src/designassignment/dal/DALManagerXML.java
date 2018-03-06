@@ -65,6 +65,11 @@ public class DALManagerXML implements DALFacade {
     @Override
     public List<Message> getMessages() throws DALException {
         List<Message> mesageData = new ArrayList<>();
+        
+        if (file == null){
+            return mesageData;
+        }
+        
         try {
             JAXBContext context = JAXBContext
                     .newInstance(MessageWrapper.class);
