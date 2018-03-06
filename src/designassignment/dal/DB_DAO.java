@@ -75,7 +75,7 @@ public class DB_DAO {
 
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
-            int id = rs.getInt("Id");
+            int id = rs.getInt(1);
 
             return new Message(message, id);
 
