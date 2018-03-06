@@ -17,14 +17,30 @@ import java.util.List;
  */
 public class BLLManager implements BLLFacade
 {
-    DALFacade dal;
+    private static BLLManager INSTANCE = null;
+    private DALFacade dal;
 
     /**
      * BLLManager constructor.
      */
-    public BLLManager()
+    private BLLManager()
     {
         this.dal = DALManager.getInstance();
+    }
+
+    public static BLLManager getInstance()
+    {
+        if (INSTANCE == null)
+        {
+            synchronized (BLLManager.class)
+            {
+                if (INSTANCE == null)
+                {
+                    INSTANCE = new BLLManager();
+                }
+            }
+        }
+        return INSTANCE;
     }
 
     /**
