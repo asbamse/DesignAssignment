@@ -68,9 +68,7 @@ public class MainController implements Initializable
 
         mm.addListener((c) ->
         {
-            txtfldMessage.clear();
-            txtfldMessage.requestFocus();
-            lstvwMessages.scrollTo(lstvwMessages.getItems().get(lstvwMessages.getItems().size() - 1));
+            onUpdate();
         });
 
         // Focus textField on run.
@@ -79,7 +77,7 @@ public class MainController implements Initializable
             @Override
             public void run()
             {
-                txtfldMessage.requestFocus();
+                onUpdate();
             }
         });
     }
@@ -92,5 +90,16 @@ public class MainController implements Initializable
     private void handleSend(ActionEvent event)
     {
         mm.sendMessage(txtfldMessage.getText());
+    }
+
+    /**
+     * Clear textfield, Focus textfield and scroll down to latest message.
+     */
+    private void onUpdate()
+    {
+        txtfldMessage.clear();
+        txtfldMessage.requestFocus();
+        lstvwMessages.scrollTo(lstvwMessages.getItems().get(lstvwMessages.getItems().size() - 1));
+
     }
 }
