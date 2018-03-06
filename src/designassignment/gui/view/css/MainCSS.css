@@ -8,6 +8,22 @@ and open the template in the editor.
     Author     : Asbamz
 */
 
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+}
+
+.list-view:selected {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+}
+
+.list-view:focused {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+    -fx-background-insets: 1px;
+}
+
 .list-cell {
     -fx-background-color: white;
     -fx-text-fill: black;
@@ -21,4 +37,49 @@ and open the template in the editor.
 .list-cell:focused {
     -fx-background-color: white;
     -fx-text-fill: black;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical
+{
+    -fx-background-color: #d9d9d9;
+    -fx-background-radius: 2;
+}
+
+.increment-button, .decrement-button
+{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track
+{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb
+{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 2;
+}
+
+.text-field {
+    -fx-background-color: #d9d9d9;
+    -fx-text-fill: #434343;
+}
+
+.button:pressed{
+    -fx-background-color: #3176b5;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button{
+    -fx-background-color: #46a2f8;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button:hover {
+    -fx-cursor: hand;
 }
