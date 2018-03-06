@@ -8,6 +8,22 @@ and open the template in the editor.
     Author     : Asbamz
 */
 
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+}
+
+.list-view:selected {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+}
+
+.list-view:focused {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+    -fx-background-insets: 1px;
+}
+
 .list-cell {
     -fx-background-color: white;
     -fx-text-fill: black;
@@ -21,4 +37,23 @@ and open the template in the editor.
 .list-cell:focused {
     -fx-background-color: white;
     -fx-text-fill: black;
+}
+
+.text-field {
+    -fx-background-color: #d9d9d9;
+    -fx-text-fill: #434343;
+}
+
+.button:pressed{
+    -fx-background-color: #3176b5;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button{
+    -fx-background-color: #46a2f8;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button:hover {
+    -fx-cursor: hand;
 }
