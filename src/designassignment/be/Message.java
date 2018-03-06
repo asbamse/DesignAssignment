@@ -9,10 +9,15 @@ package designassignment.be;
  *
  * @author Asbamz
  */
+
+
 public class Message
 {
     private String message;
     private int id;
+
+    public Message() {
+    }
 
     /**
      * Message constructor.
@@ -51,4 +56,5 @@ public class Message
     {
         return message;
     }
+   
 }

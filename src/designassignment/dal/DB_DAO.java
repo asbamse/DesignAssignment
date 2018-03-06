@@ -70,10 +70,10 @@ public class DB_DAO {
 
             PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, message);
-
+            
             statement.execute();
 
-            ResultSet rs = statement.getGeneratedKeys();
+            ResultSet rs = statement.getGeneratedKeys(); 
             rs.next();
             int id = rs.getInt(1);
 

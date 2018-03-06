@@ -8,36 +8,65 @@ and open the template in the editor.
     Author     : Asbamz
 */
 
-.list-cell {
+.list-view {
     -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-border-color: #d9d9d9;
 }
 
-.list-cell:selected {
+.list-view:selected {
     -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-border-color: #d9d9d9;
 }
 
-.list-cell:focused {
+.list-view:focused {
     -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-border-color: #d9d9d9;
+    -fx-background-insets: 1px;
 }
 
-/*#AnchorPane {
-    -fx-background-color: black;
-    -fx-background-fills: black;
-}*/
+
+
+.scroll-bar:horizontal, .scroll-bar:vertical
+{
+    -fx-background-color: #d9d9d9;
+    -fx-background-radius: 2;
+}
+
+.increment-button, .decrement-button
+{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track
+{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb
+{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 2;
+}
 
 .text-field {
-    -fx-background-radius: 0;
+    -fx-background-color: #d9d9d9;
+    -fx-text-fill: #434343;
 }
 
-.text-field:focused {
-    -fx-focus-color: transparent;
-/*    -fx-padding: 1 0 1 0;*/
+.button:pressed{
+    -fx-background-color: #3176b5;
+    -fx-text-fill: #FFFFFF;
 }
 
-.button {
-    -fx-background-radius: 0;
-    -fx-background-color: white
+.button{
+    -fx-background-color: #46a2f8;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button:hover {
+    -fx-cursor: hand;
 }

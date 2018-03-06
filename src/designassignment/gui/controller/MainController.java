@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 /**
@@ -52,18 +53,27 @@ public class MainController implements Initializable
             {
                 ListCell<Message> cell = new ListCell<Message>()
                 {
+                    private Text text;
+
                     @Override
                     protected void updateItem(Message item, boolean empty)
                     {
                         super.updateItem(item, empty);
                         if (item != null)
                         {
-                            setText(item.getMessage());
+                            text = new Text(item.getMessage());
+                            text.setWrappingWidth(lstvwMessages.getWidth() - 35);
+                            setGraphic(text);
                         }
                     }
                 };
                 return cell;
             }
+        });
+
+        lstvwMessages.widthProperty().addListener((observable, oldValue, newValue) ->
+        {
+            lstvwMessages.refresh();
         });
 
         mm.addListener((c) ->
