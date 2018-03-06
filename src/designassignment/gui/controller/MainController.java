@@ -16,8 +16,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 
 /**
  *
@@ -43,6 +45,27 @@ public class MainController implements Initializable
     {
         mm = new MainModel();
         lstvwMessages.setItems(mm.getMessages());
+        lstvwMessages.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>()
+        {
+            @Override
+            public ListCell<Message> call(ListView<Message> param)
+            {
+                ListCell<Message> cell = new ListCell<Message>()
+                {
+                    @Override
+                    protected void updateItem(Message item, boolean empty)
+                    {
+                        super.updateItem(item, empty);
+                        if (item != null)
+                        {
+                            setText(item.getMessage());
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+
         mm.addListener((c) ->
         {
             txtfldMessage.clear();
