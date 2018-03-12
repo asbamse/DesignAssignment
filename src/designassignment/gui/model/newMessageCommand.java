@@ -5,11 +5,10 @@
  */
 package designassignment.gui.model;
 
-import designassignment.gui.model.Command;
 import designassignment.be.Message;
 import designassignment.bll.BLLException;
-import designassignment.dal.DALException;
-import designassignment.dal.DALFacade;
+import designassignment.bll.BLLFacade;
+import designassignment.bll.BLLManager;
 
 /**
  *
@@ -17,33 +16,23 @@ import designassignment.dal.DALFacade;
  */
 public class newMessageCommand implements Command{
     
-    String messageText;
-    DALFacade dal;
-    Message thisMessage;
+    private String messageText;
+    private Message thisMessage;
+    private BLLFacade bll = BLLManager.getInstance();
 
-    public newMessageCommand(String messageText, DALFacade dal) {
+    public newMessageCommand(String messageText) {
         this.messageText = messageText;
     }
 
     @Override
     public void execute() throws BLLException {
-        try
-        {
-            thisMessage = dal.sendMessage(messageText);
-        }
-        catch (DALException ex)
-        {
-            throw new BLLException(ex.getMessage(), ex.getCause());
-        }
+        thisMessage = bll.sendMessage(messageText);
     }
 
     @Override
     public void undo() {
-        dal.deleteMessage(thisMessage);
+        bll.deleteMessage(thisMessage);
     }
     
-    public Message getMessage(){
-        return thisMessage;
-    }
-    
+  
 }

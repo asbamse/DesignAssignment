@@ -26,4 +26,6 @@ public interface BLLFacade
      * @return a list og message objects
      */
     public List<Message> getMessages() throws BLLException;
+
+    public void deleteMessage(Message thisMessage);
 }
