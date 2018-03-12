@@ -148,4 +148,12 @@ public class MainController implements Initializable
             }
         }
     }
+
+    @FXML
+    private void handleRedo(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleUndo(ActionEvent event) {
+    }
 }
