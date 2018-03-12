@@ -134,7 +134,12 @@ public class MainController implements Initializable
     {
         txtfldMessage.clear();
         txtfldMessage.requestFocus();
-        lstvwMessages.scrollTo(lstvwMessages.getItems().get(lstvwMessages.getItems().size() - 1));
-
+        if (lstvwMessages.getItems() != null)
+        {
+            if (lstvwMessages.getItems().size() > 0)
+            {
+                lstvwMessages.scrollTo(lstvwMessages.getItems().get(lstvwMessages.getItems().size() - 1));
+            }
+        }
     }
 }
