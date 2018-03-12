@@ -83,4 +83,18 @@ public class MainModel
     {
         messages.addListener(cl);
     }
+
+    
+    void deleteMessage(Message thisMessage) {
+        try
+        {
+            bll.deleteMessage(thisMessage);
+            messages.remove(thisMessage);
+        }
+        catch (BLLException ex)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Could not delete message!: " + ex.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
 }

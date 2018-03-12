@@ -21,27 +21,21 @@ public class newMessageCommand implements Command{
     private String messageText;
     private Message thisMessage;
     private BLLFacade bll = BLLManager.getInstance();
+    private MainModel mainModel;
 
-    public newMessageCommand(String messageText) {
+    public newMessageCommand(String messageText, MainModel mModel) {
         this.messageText = messageText;
+        mainModel = mModel;
     }
 
     @Override
     public void execute() {
-        try {
-            thisMessage = bll.sendMessage(messageText);
-        } catch (BLLException ex) {
-            Logger.getLogger(newMessageCommand.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        thisMessage = mainModel.sendMessage(messageText);
     }
 
     @Override
     public void undo() {
-        try {
-            bll.deleteMessage(thisMessage);
-        } catch (BLLException ex) {
-            Logger.getLogger(newMessageCommand.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        mainModel.deleteMessage(thisMessage);
     }
     
   
