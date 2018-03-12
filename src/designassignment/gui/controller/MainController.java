@@ -6,6 +6,7 @@
 package designassignment.gui.controller;
 
 import designassignment.be.Message;
+import designassignment.gui.model.Command;
 import designassignment.gui.model.MainModel;
 import designassignment.gui.model.newMessageCommand;
 import java.net.URL;
@@ -44,9 +45,9 @@ public class MainController implements Initializable
     private Button btnRedo;
     @FXML
     private Button btnUndo;
-    
+
     private MainModel mm;
-    private ArrayList<newMessageCommand> undoStack;
+    private ArrayList<Command> undoStack;
 
     /**
      * Initialize window.
@@ -133,9 +134,9 @@ public class MainController implements Initializable
     @FXML
     private void handleSend(ActionEvent event)
     {
-        newMessageCommand message = new newMessageCommand(txtfldMessage.getText());
+        Command message = new newMessageCommand(txtfldMessage.getText(), mm);
         undoStack.add(message);
-        
+
     }
 
     /**
@@ -155,14 +156,17 @@ public class MainController implements Initializable
     }
 
     @FXML
-    private void handleRedo(ActionEvent event) {
+    private void handleRedo(ActionEvent event)
+    {
     }
 
     @FXML
-    private void handleUndo(ActionEvent event) {
-        for (int i = 0; i < undoStack.size(); i++) {
+    private void handleUndo(ActionEvent event)
+    {
+        for (int i = 0; i < undoStack.size(); i++)
+        {
             undoStack.get(i).undo();
         }
-        
+
     }
 }
