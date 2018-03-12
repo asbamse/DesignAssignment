@@ -84,4 +84,8 @@ public class DB_DAO {
         }
     }
 
+    void deleteMessage(Message thisMessage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

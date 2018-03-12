@@ -56,4 +56,9 @@ public class DALManager implements DALFacade
         return dbdao.getAllMessages();
     }
 
+    @Override
+    public void deleteMessage(Message thisMessage) throws DALException {
+        dbdao.deleteMessage(thisMessage);
+    }
+
 }
