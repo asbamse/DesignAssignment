@@ -24,7 +24,7 @@ public class MessageWrapper {
         return messages;
     }
 
-    public void setPersons(List<Message> messages) {
+    public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
 }

@@ -29,5 +29,5 @@ public interface DALFacade
      */
     public List<Message> getMessages() throws DALException;
 
-    public void deleteMessage(Message thisMessage);
+    public void deleteMessage(Message thisMessage) throws DALException;
 }

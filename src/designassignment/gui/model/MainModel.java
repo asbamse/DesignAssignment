@@ -9,6 +9,7 @@ import designassignment.be.Message;
 import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -65,7 +66,11 @@ public class MainModel
         messages.clear();
         try
         {
-            messages.addAll(bll.getMessages());
+            List<Message> allMessages = bll.getMessages();
+            if (allMessages != null)
+            {
+                messages.addAll(bll.getMessages());
+            }
         }
         catch (BLLException ex)
         {

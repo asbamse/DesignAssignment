@@ -9,6 +9,8 @@ import designassignment.be.Message;
 import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,13 +27,21 @@ public class newMessageCommand implements Command{
     }
 
     @Override
-    public void execute() throws BLLException {
-        thisMessage = bll.sendMessage(messageText);
+    public void execute() {
+        try {
+            thisMessage = bll.sendMessage(messageText);
+        } catch (BLLException ex) {
+            Logger.getLogger(newMessageCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void undo() {
-        bll.deleteMessage(thisMessage);
+        try {
+            bll.deleteMessage(thisMessage);
+        } catch (BLLException ex) {
+            Logger.getLogger(newMessageCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
   
