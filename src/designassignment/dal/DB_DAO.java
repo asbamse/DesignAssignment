@@ -84,8 +84,18 @@ public class DB_DAO {
         }
     }
 
-    void deleteMessage(Message thisMessage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void deleteMessage(Message thisMessage) throws DALException {
+        try (Connection con = connecter.getConnection()) {
+            String sql = "DELETE Message WHERE id = ?";
+
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, thisMessage.getId());
+            
+            statement.execute();
+
+        } catch (SQLException ex) {
+            throw new DALException(ex.getMessage(), ex.getCause());
+        }
     }
 
 }

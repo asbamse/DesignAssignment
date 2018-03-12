@@ -46,6 +46,14 @@ public class Message
     {
         return message;
     }
+    
+    /**
+     * get the message id
+     * @return the id
+     */
+    public int getId(){
+        return id;
+    }
 
     /**
      * Message to String.
