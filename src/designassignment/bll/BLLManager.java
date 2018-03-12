@@ -75,4 +75,16 @@ public class BLLManager implements BLLFacade
         }
     }
 
+    @Override
+    public void deleteMessage(Message thisMessage) throws BLLException {
+         try
+        {
+            dal.deleteMessage(thisMessage);
+        }
+        catch (DALException ex)
+        {
+            throw new BLLException(ex.getMessage(), ex.getCause());
+        }
+    }
+
 }
