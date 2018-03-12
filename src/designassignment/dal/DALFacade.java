@@ -28,4 +28,6 @@ public interface DALFacade
      * @return a list og message objects
      */
     public List<Message> getMessages() throws DALException;
+
+    public void deleteMessage(Message thisMessage);
 }
