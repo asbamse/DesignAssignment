@@ -31,4 +31,7 @@ public interface DAO
      * @throws DALException
      */
     public Message saveNewMessage(String message) throws DALException;
+
+    public void deleteMessage(Message thisMessage) throws DALException;
+
 }
