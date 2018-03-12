@@ -26,7 +26,7 @@ public class BLLManager implements BLLFacade
      */
     private BLLManager()
     {
-        this.dal = new DALManagerXML();
+        this.dal = DALManager.getInstance();
     }
 
     public static BLLManager getInstance()

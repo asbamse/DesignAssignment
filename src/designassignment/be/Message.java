@@ -5,18 +5,20 @@
  */
 package designassignment.be;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author Asbamz
  */
-
-
 public class Message
 {
-    private String message;
     private int id;
+    private String message;
 
-    public Message() {
+    public Message()
+    {
     }
 
     /**
@@ -27,7 +29,7 @@ public class Message
     {
         this.message = message;
     }
-    
+
     /**
      * Message constructor.
      * @param message
@@ -38,13 +40,24 @@ public class Message
         this.id = id;
     }
 
-    /**
-     * Get message.
-     * @return
-     */
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
     public String getMessage()
     {
         return message;
+    }
+
+    public void setMessage(String message)
+    {
+        this.message = message;
     }
 
     /**
@@ -56,5 +69,5 @@ public class Message
     {
         return message;
     }
-   
+
 }

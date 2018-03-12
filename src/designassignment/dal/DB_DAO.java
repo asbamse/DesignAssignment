@@ -18,11 +18,13 @@ import java.util.List;
  *
  * @author janvanzetten
  */
-public class DB_DAO {
+public class DB_DAO implements DAO
+{
 
     DBConnecter connecter;
 
-    public DB_DAO() {
+    public DB_DAO()
+    {
         connecter = new DBConnecter();
     }
 
@@ -32,8 +34,11 @@ public class DB_DAO {
      * @return
      * @throws DALException
      */
-    List<Message> getAllMessages() throws DALException {
-        try (Connection con = connecter.getConnection()) {
+    @Override
+    public List<Message> getAllMessages() throws DALException
+    {
+        try (Connection con = connecter.getConnection())
+        {
             String sql = "SELECT * FROM Message";
 
             Statement st = con.createStatement();
@@ -41,7 +46,8 @@ public class DB_DAO {
 
             List<Message> messages = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
 
                 Message message = new Message(rs.getString("Text"));
 
@@ -51,7 +57,9 @@ public class DB_DAO {
 
             return messages;
 
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             throw new DALException(ex.getMessage(), ex.getCause());
         }
     }
@@ -64,22 +72,27 @@ public class DB_DAO {
      * the given text
      * @throws DALException
      */
-    Message saveNewMessage(String message) throws DALException {
-        try (Connection con = connecter.getConnection()) {
+    @Override
+    public Message saveNewMessage(String message) throws DALException
+    {
+        try (Connection con = connecter.getConnection())
+        {
             String sql = "INSERT INTO Message VALUES (?)";
 
             PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, message);
-            
+
             statement.execute();
 
-            ResultSet rs = statement.getGeneratedKeys(); 
+            ResultSet rs = statement.getGeneratedKeys();
             rs.next();
             int id = rs.getInt(1);
 
             return new Message(message, id);
 
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             throw new DALException(ex.getMessage(), ex.getCause());
         }
     }
