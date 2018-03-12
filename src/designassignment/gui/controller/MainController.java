@@ -7,7 +7,9 @@ package designassignment.gui.controller;
 
 import designassignment.be.Message;
 import designassignment.gui.model.MainModel;
+import designassignment.gui.model.newMessageCommand;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -36,14 +38,15 @@ public class MainController implements Initializable
     private ListView<Message> lstvwMessages;
     @FXML
     private TextField txtfldMessage;
-
-    private MainModel mm;
     @FXML
     private AnchorPane mainPane;
     @FXML
     private Button btnRedo;
     @FXML
     private Button btnUndo;
+    
+    private MainModel mm;
+    private ArrayList<newMessageCommand> undoStack;
 
     /**
      * Initialize window.
@@ -130,7 +133,9 @@ public class MainController implements Initializable
     @FXML
     private void handleSend(ActionEvent event)
     {
-        mm.sendMessage(txtfldMessage.getText());
+        newMessageCommand message = new newMessageCommand(txtfldMessage.getText());
+        undoStack.add(message);
+        
     }
 
     /**
@@ -155,5 +160,9 @@ public class MainController implements Initializable
 
     @FXML
     private void handleUndo(ActionEvent event) {
+        for (int i = 0; i < undoStack.size(); i++) {
+            undoStack.get(i).undo();
+        }
+        
     }
 }
