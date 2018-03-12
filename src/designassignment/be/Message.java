@@ -54,6 +54,14 @@ public class Message
     {
         return message;
     }
+    
+    /**
+     * get the message id
+     * @return the id
+     */
+    public int getId(){
+        return id;
+    }
 
     public void setMessage(String message)
     {
