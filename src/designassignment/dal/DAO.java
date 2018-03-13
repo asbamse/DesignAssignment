@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public interface DAO
      * the given text
      * @throws DALException
      */
-    public Message saveNewMessage(String message) throws DALException;
+    public Message saveNewMessage(String message, User sender) throws DALException;
 
     public void deleteMessage(Message thisMessage) throws DALException;
 

@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import java.util.List;
 
 /**
@@ -30,4 +31,23 @@ public interface DALFacade
     public List<Message> getMessages() throws DALException;
 
     public void deleteMessage(Message thisMessage) throws DALException;
+    
+    
+    /**
+     * 
+     * @param Name the name
+     * @param Email the email
+     * @param password a encrypted password
+     * @return the made user
+     */
+    public User addUser(String Name, String Email, String password);
+    
+    
+    /**
+     * 
+     * @param Email the email given when the user was added
+     * @param password encrypted password using the same encryption as when the user was added
+     * @return mathcing user with same password and email
+     */
+    public User userLogin(String Email, String password);
 }

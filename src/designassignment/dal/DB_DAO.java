@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,29 +69,29 @@ public class DB_DAO implements DAO
      * add a new message to the database
      *
      * @param message
+     * @param sender the user who made the message
      * @return if there is no exeption it will return a new message object with
      * the given text
      * @throws DALException
      */
     @Override
-    public Message saveNewMessage(String message) throws DALException
+    public Message saveNewMessage(String message, User sender) throws DALException
     {
         try (Connection con = connecter.getConnection())
         {
-            String sql = "INSERT INTO Message VALUES (?)";
+            String sql = "INSERT INTO Message VALUES (?)(?)";
 
             PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, message);
+            statement.setInt(2, sender.getId());
 
             statement.execute();
 
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
             int id = rs.getInt(1);
-            int userId = rs.getInt(3);
 
-            return new Message(id, message, userId);
-
+            return new Message(id, message, sender.getId());
         }
         catch (SQLException ex)
         {

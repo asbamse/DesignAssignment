@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import java.util.List;
 
 /**
@@ -15,6 +16,8 @@ import java.util.List;
 public class DALManager implements DALFacade
 {
     DAO dbdao = new DB_DAO();
+    
+    User currentUser;
 
     private static DALManager instance;
 
@@ -46,7 +49,7 @@ public class DALManager implements DALFacade
     @Override
     public Message sendMessage(String message) throws DALException
     {
-        return dbdao.saveNewMessage(message);
+        return dbdao.saveNewMessage(message, currentUser);
     }
 
     /**
