@@ -79,7 +79,7 @@ public class DB_DAO implements DAO
     {
         try (Connection con = connecter.getConnection())
         {
-            String sql = "INSERT INTO Message VALUES (?)(?)";
+            String sql = "INSERT INTO Message VALUES (?), (?)";
 
             PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, message);
@@ -110,6 +110,59 @@ public class DB_DAO implements DAO
 
             statement.execute();
 
+        }
+        catch (SQLException ex)
+        {
+            throw new DALException(ex.getMessage(), ex.getCause());
+        }
+    }
+
+    @Override
+    public User addUser(String Name, String Email, String password) throws DALException {
+        try (Connection con = connecter.getConnection())
+        {
+            String sql = "INSERT INTO User VALUES (?), (?), (?)";
+
+            PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, Name);
+            statement.setString(2, Email);
+            statement.setString(3, password);
+            
+            statement.execute();
+
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+            int id = rs.getInt(1);
+
+            return new User(id, Name, Email, password);
+        }
+        catch (SQLException ex)
+        {
+            throw new DALException(ex.getMessage(), ex.getCause());
+        }
+    }
+
+    @Override
+    public User login(String Email, String password) throws DALException {
+        try (Connection con = connecter.getConnection())
+        {
+            String sql = "SELECT * FROM USER WHERE Email = ? AND Password = ?";
+
+            PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, Email);
+            statement.setString(2, password);
+
+            statement.execute();
+
+            ResultSet rs = statement.getGeneratedKeys();
+            if (!rs.next()){
+                throw new DALException("The email or password is ivalid, create user if you do not have one.");
+            }
+            rs.next();
+            int id = rs.getInt(1);
+            String name = rs.getString(2);
+
+            return new User(id, name, Email, password);
         }
         catch (SQLException ex)
         {

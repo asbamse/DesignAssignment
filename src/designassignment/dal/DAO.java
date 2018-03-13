@@ -35,8 +35,8 @@ public interface DAO
 
     public void deleteMessage(Message thisMessage) throws DALException;
 
-    public User addUser(String Name, String Email, String password);
+    public User addUser(String Name, String Email, String password)throws DALException;
 
-    public User login(String Email, String password);
+    public User login(String Email, String password)throws DALException;
 
 }
