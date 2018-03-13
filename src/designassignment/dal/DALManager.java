@@ -68,4 +68,16 @@ public class DALManager implements DALFacade
         dbdao.deleteMessage(thisMessage);
     }
 
+    @Override
+    public User addUser(String name, String Email, String password) {
+        currentUser = dbdao.addUser(name,Email,password);
+        return currentUser;
+    }
+
+    @Override
+    public User userLogin(String Email, String password) {
+        currentUser = dbdao.login(Email,password);
+        return currentUser;
+    }
+
 }
