@@ -6,6 +6,7 @@
 package designassignment.gui.controller;
 
 import designassignment.be.Message;
+import designassignment.bll.BLLException;
 import designassignment.gui.model.Command;
 import designassignment.gui.model.MainModel;
 import designassignment.gui.model.newMessageCommand;
@@ -49,6 +50,7 @@ public class MainController implements Initializable
 
     private MainModel mm;
     private Stack<Command> undoStack;
+    private Stack<Command> redoStack;
 
     /**
      * Initialize window.
@@ -135,10 +137,12 @@ public class MainController implements Initializable
      * @param event
      */
     @FXML
-    private void handleSend(ActionEvent event)
+    private void handleSend(ActionEvent event) throws BLLException
     {
         Command message = new newMessageCommand(txtfldMessage.getText(), mm);
-        undoStack.add(message);
+        message.execute();
+        undoStack.push(message);
+        redoStack.clear();
 
     }
 
@@ -159,17 +163,20 @@ public class MainController implements Initializable
     }
 
     @FXML
-    private void handleRedo(ActionEvent event)
+    private void handleRedo(ActionEvent event) throws BLLException
     {
+        if (!redoStack.empty()) {
+            undoStack.push(redoStack.peek());
+            redoStack.pop().execute();
+        }
     }
 
     @FXML
     private void handleUndo(ActionEvent event)
     {
-        for (int i = 0; i < undoStack.size(); i++)
-        {
-            undoStack.get(i).undo();
+        if (!undoStack.empty()) {
+            redoStack.push(undoStack.peek());
+            undoStack.pop().undo();
         }
-
     }
 }
