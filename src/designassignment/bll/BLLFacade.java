@@ -35,7 +35,7 @@ public interface BLLFacade
     public void deleteMessage(Message thisMessage)throws BLLException;
     
     /**
-     * Creates a new user.
+     * Creates a new user and encrypts the password.
      * @param username
      * @param email
      * @param password
