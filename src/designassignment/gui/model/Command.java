@@ -15,7 +15,7 @@ public interface Command {
     
      
     
-    public void execute() throws BLLException;
+    public void execute();
     
     public void undo();
     
