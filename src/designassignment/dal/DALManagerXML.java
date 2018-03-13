@@ -63,6 +63,6 @@ public class DALManagerXML implements DALFacade
     @Override
     public void deleteMessage(Message thisMessage) throws DALException
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        xmldao.deleteMessage(thisMessage);
     }
 }

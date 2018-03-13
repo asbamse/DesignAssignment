@@ -91,6 +91,32 @@ public class XML_DAO implements DAO
         Message messageobject = new Message(message, id);
         messages.add(messageobject);
 
+        saveMessagesToXML(messages);
+
+        return messageobject;
+    }
+
+    @Override
+    public void deleteMessage(Message thisMessage) throws DALException
+    {
+
+        List<Message> messages = new ArrayList<>();
+        try
+        {
+            messages = getAllMessages();
+        }
+        catch (DALException ex)
+        {
+
+        }
+
+        messages.remove(thisMessage);
+
+        saveMessagesToXML(messages);
+    }
+
+    private void saveMessagesToXML(List<Message> messages) throws DALException
+    {
         try
         {
             JAXBContext context = JAXBContext.newInstance(MessageWrapper.class);
@@ -109,8 +135,6 @@ public class XML_DAO implements DAO
             ex.printStackTrace();
             throw new DALException(ex.getMessage(), ex.getCause());
         }
-
-        return messageobject;
     }
 
     /**
@@ -154,11 +178,5 @@ public class XML_DAO implements DAO
         {
             prefs.remove("filePath");
         }
-    }
-
-    @Override
-    public void deleteMessage(Message thisMessage) throws DALException
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
