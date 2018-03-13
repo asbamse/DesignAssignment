@@ -35,12 +35,12 @@ public interface DALFacade
     
     /**
      * 
-     * @param Name the name
+     * @param name the name
      * @param Email the email
      * @param password a encrypted password
      * @return the made user
      */
-    public User addUser(String Name, String Email, String password);
+    public User addUser(String name, String Email, String password);
     
     
     /**
