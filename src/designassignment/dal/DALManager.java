@@ -49,6 +49,9 @@ public class DALManager implements DALFacade
     @Override
     public Message sendMessage(String message) throws DALException
     {
+        if (currentUser == null){
+            throw new DALException("Please login before sending messages");
+        }
         return dbdao.saveNewMessage(message, currentUser);
     }
 
@@ -69,13 +72,13 @@ public class DALManager implements DALFacade
     }
 
     @Override
-    public User addUser(String name, String Email, String password) {
+    public User addUser(String name, String Email, String password) throws DALException {
         currentUser = dbdao.addUser(name,Email,password);
         return currentUser;
     }
 
     @Override
-    public User userLogin(String Email, String password) {
+    public User userLogin(String Email, String password) throws DALException {
         currentUser = dbdao.login(Email,password);
         return currentUser;
     }

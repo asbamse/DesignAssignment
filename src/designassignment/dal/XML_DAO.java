@@ -7,6 +7,7 @@ package designassignment.dal;
 
 import designassignment.be.Message;
 import designassignment.be.MessageWrapper;
+import designassignment.be.User;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class XML_DAO implements DAO
     }
 
     @Override
-    public Message saveNewMessage(String message) throws DALException
+    public Message saveNewMessage(String message, User sender) throws DALException
     {
 
         List<Message> messages = new ArrayList<>();
@@ -180,5 +181,15 @@ public class XML_DAO implements DAO
         {
             prefs.remove("filePath");
         }
+    }
+
+    @Override
+    public User addUser(String Name, String Email, String password) throws DALException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User login(String Email, String password) throws DALException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
