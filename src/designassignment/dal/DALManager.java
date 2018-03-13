@@ -49,6 +49,9 @@ public class DALManager implements DALFacade
     @Override
     public Message sendMessage(String message) throws DALException
     {
+        if (currentUser == null){
+            throw new DALException("Please login before sending messages");
+        }
         return dbdao.saveNewMessage(message, currentUser);
     }
 

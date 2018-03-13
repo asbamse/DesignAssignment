@@ -50,7 +50,7 @@ public class DB_DAO implements DAO
             while (rs.next())
             {
 
-                Message message = new Message(rs.getInt("id"), rs.getString("Text"), rs.getInt("userId"));
+                Message message = new Message(rs.getInt("Id"), rs.getString("Text"), rs.getInt("UserId"));
 
                 messages.add(message);
 
