@@ -7,9 +7,9 @@ package designassignment.gui.controller;
 
 import designassignment.be.Message;
 import designassignment.bll.BLLException;
-import designassignment.gui.model.Command;
+import designassignment.gui.model.command.Command;
 import designassignment.gui.model.MainModel;
-import designassignment.gui.model.newMessageCommand;
+import designassignment.gui.model.command.newMessageCommand;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Stack;
