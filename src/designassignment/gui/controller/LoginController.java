@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -23,21 +24,34 @@ public class LoginController implements Initializable {
     private TextField txtfieldUsername;
     @FXML
     private TextField txtfieldPassword;
+    @FXML
+    private Label lblEMail;
+    @FXML
+    private TextField txtfieldEMail;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        lblEMail.setVisible(false);
+        txtfieldEMail.setVisible(false);
+    }
 
     @FXML
     private void handleSignIn(ActionEvent event) {
+
     }
 
     @FXML
-    private void handleSignUp(ActionEvent event) {
+    private void handleNewUser(ActionEvent event) {
+        if (txtfieldEMail.getText().isEmpty()) {
+            lblEMail.setVisible(true);
+            txtfieldEMail.setVisible(true);
+        }
+        else {
+            
+        }
     }
-    
+
 }
