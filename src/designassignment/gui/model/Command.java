@@ -5,8 +5,6 @@
  */
 package designassignment.gui.model;
 
-import designassignment.bll.BLLException;
-
 /**
  *
  * @author janvanzetten
