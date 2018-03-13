@@ -84,8 +84,8 @@ public class MainModel
         messages.addListener(cl);
     }
 
-    
-    void deleteMessage(Message thisMessage) {
+    public void deleteMessage(Message thisMessage)
+    {
         try
         {
             bll.deleteMessage(thisMessage);

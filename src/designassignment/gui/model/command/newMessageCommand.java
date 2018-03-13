@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model;
+package designassignment.gui.model.command;
 
 import designassignment.be.Message;
+import designassignment.gui.model.MainModel;
 
 /**
  *
