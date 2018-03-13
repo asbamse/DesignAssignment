@@ -6,11 +6,8 @@
 package designassignment.gui.model;
 
 import designassignment.be.Message;
-import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
