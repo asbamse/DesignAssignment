@@ -11,7 +11,6 @@ import designassignment.gui.model.command.Command;
 import designassignment.gui.model.MainModel;
 import designassignment.gui.model.command.newMessageCommand;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Stack;
 import javafx.application.Platform;
@@ -21,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollBar;
@@ -36,7 +34,6 @@ import javafx.util.Callback;
  */
 public class MainController implements Initializable
 {
-    private Label label;
     @FXML
     private ListView<Message> lstvwMessages;
     @FXML
