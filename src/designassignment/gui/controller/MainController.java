@@ -12,6 +12,7 @@ import designassignment.gui.model.newMessageCommand;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Stack;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +48,7 @@ public class MainController implements Initializable
     private Button btnUndo;
 
     private MainModel mm;
-    private ArrayList<Command> undoStack;
+    private Stack<Command> undoStack;
 
     /**
      * Initialize window.
@@ -125,6 +126,8 @@ public class MainController implements Initializable
                 onUpdate();
             }
         });
+
+        undoStack = new Stack<>();
     }
 
     /**
