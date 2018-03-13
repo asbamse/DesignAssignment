@@ -16,28 +16,13 @@ public class Message
 {
     private int id;
     private String message;
+    private int userId;
 
-    public Message()
+    public Message(int id, String message, int userId)
     {
-    }
-
-    /**
-     * Message constructor.
-     * @param message
-     */
-    public Message(String message)
-    {
-        this.message = message;
-    }
-
-    /**
-     * Message constructor.
-     * @param message
-     */
-    public Message(String message, int id)
-    {
-        this.message = message;
         this.id = id;
+        this.message = message;
+        this.userId = userId;
     }
 
     public int getId()
@@ -45,19 +30,14 @@ public class Message
         return id;
     }
 
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-
     public String getMessage()
     {
         return message;
     }
 
-    public void setMessage(String message)
+    public int getUserId()
     {
-        this.message = message;
+        return userId;
     }
 
     /**

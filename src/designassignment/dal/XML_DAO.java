@@ -83,12 +83,14 @@ public class XML_DAO implements DAO
         }
 
         int id = 0;
+        int userId = 0;
         if (messages.size() > 0)
         {
             id = messages.get(messages.size() - 1).getId();
+            userId = messages.get(messages.size() - 1).getUserId();
         }
 
-        Message messageobject = new Message(message, id);
+        Message messageobject = new Message(id, message, userId);
         messages.add(messageobject);
 
         saveMessagesToXML(messages);
