@@ -3,18 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model;
+package designassignment.gui.model.inputvalidation;
 
 /**
  *
- * @author janvanzetten
+ * @author Asbamz
  */
-public interface Command {
-    
-     
-    
-    public void execute();
-    
-    public void undo();
-    
+public interface InputValidation
+{
+    public boolean validateInput(String input) throws ValidationException;
 }

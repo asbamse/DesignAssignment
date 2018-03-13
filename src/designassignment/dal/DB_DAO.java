@@ -49,7 +49,7 @@ public class DB_DAO implements DAO
             while (rs.next())
             {
 
-                Message message = new Message(rs.getString("Text"));
+                Message message = new Message(rs.getInt("id"), rs.getString("Text"), rs.getInt("userId"));
 
                 messages.add(message);
 
@@ -87,8 +87,9 @@ public class DB_DAO implements DAO
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
             int id = rs.getInt(1);
+            int userId = rs.getInt(3);
 
-            return new Message(message, id);
+            return new Message(id, message, userId);
 
         }
         catch (SQLException ex)
