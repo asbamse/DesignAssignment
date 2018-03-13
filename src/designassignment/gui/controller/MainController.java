@@ -130,6 +130,7 @@ public class MainController implements Initializable
         });
 
         undoStack = new Stack<>();
+        redoStack = new Stack<>();
     }
 
     /**
@@ -165,7 +166,8 @@ public class MainController implements Initializable
     @FXML
     private void handleRedo(ActionEvent event) throws BLLException
     {
-        if (!redoStack.empty()) {
+        if (!redoStack.empty())
+        {
             undoStack.push(redoStack.peek());
             redoStack.pop().execute();
         }
@@ -174,7 +176,8 @@ public class MainController implements Initializable
     @FXML
     private void handleUndo(ActionEvent event)
     {
-        if (!undoStack.empty()) {
+        if (!undoStack.empty())
+        {
             redoStack.push(undoStack.peek());
             undoStack.pop().undo();
         }
