@@ -69,13 +69,13 @@ public class DALManager implements DALFacade
     }
 
     @Override
-    public User addUser(String name, String Email, String password) {
+    public User addUser(String name, String Email, String password) throws DALException {
         currentUser = dbdao.addUser(name,Email,password);
         return currentUser;
     }
 
     @Override
-    public User userLogin(String Email, String password) {
+    public User userLogin(String Email, String password) throws DALException {
         currentUser = dbdao.login(Email,password);
         return currentUser;
     }

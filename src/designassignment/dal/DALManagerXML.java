@@ -6,6 +6,7 @@
 package designassignment.dal;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import java.util.List;
 
 /**
@@ -46,7 +47,8 @@ public class DALManagerXML implements DALFacade
     @Override
     public Message sendMessage(String message) throws DALException
     {
-        return xmldao.saveNewMessage(message);
+        //return xmldao.saveNewMessage(message, sender);
+        return null;
     }
 
     /**
@@ -64,5 +66,15 @@ public class DALManagerXML implements DALFacade
     public void deleteMessage(Message thisMessage) throws DALException
     {
         xmldao.deleteMessage(thisMessage);
+    }
+
+    @Override
+    public User addUser(String name, String Email, String password) throws DALException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User userLogin(String Email, String password) throws DALException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

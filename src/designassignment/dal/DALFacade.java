@@ -40,7 +40,7 @@ public interface DALFacade
      * @param password a encrypted password
      * @return the made user
      */
-    public User addUser(String name, String Email, String password);
+    public User addUser(String name, String Email, String password) throws DALException;
     
     
     /**
@@ -49,5 +49,5 @@ public interface DALFacade
      * @param password encrypted password using the same encryption as when the user was added
      * @return mathcing user with same password and email
      */
-    public User userLogin(String Email, String password);
+    public User userLogin(String Email, String password) throws DALException;
 }
