@@ -6,8 +6,6 @@
 package designassignment.gui.model;
 
 import designassignment.be.Message;
-import designassignment.bll.BLLFacade;
-import designassignment.bll.BLLManager;
 
 /**
  *
@@ -17,7 +15,6 @@ public class newMessageCommand implements Command{
     
     private String messageText;
     private Message thisMessage;
-    private BLLFacade bll = BLLManager.getInstance();
     private MainModel mainModel;
 
     public newMessageCommand(String messageText, MainModel mModel) {
