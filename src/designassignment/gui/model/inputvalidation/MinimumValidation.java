@@ -9,7 +9,7 @@ package designassignment.gui.model.inputvalidation;
  *
  * @author Asbamz
  */
-public class MinimumValidation implements InputValidation
+public class MinimumValidation extends AbstractInputValidation
 {
     private final int MINIMUM_LENGTH;
 
@@ -19,19 +19,22 @@ public class MinimumValidation implements InputValidation
     }
 
     @Override
-    public boolean validateInput(String input) throws ValidationException
+    public boolean validateInput(String input)
     {
         if (input == null)
         {
-            throw new ValidationException("Input is null!");
+            validationMessage = "Input is null!";
+            return false;
         }
         if (input.length() == 0)
         {
-            throw new ValidationException("Input is empty!");
+            validationMessage = "Input is empty!";
+            return false;
         }
         if (input.length() < MINIMUM_LENGTH)
         {
-            throw new ValidationException("Input should be at least " + MINIMUM_LENGTH + " characters long!");
+            validationMessage = "Input should be at least " + MINIMUM_LENGTH + " characters long!";
+            return false;
         }
 
         return true;
