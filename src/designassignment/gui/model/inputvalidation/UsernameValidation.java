@@ -9,7 +9,7 @@ package designassignment.gui.model.inputvalidation;
  *
  * @author Asbamz
  */
-public class UsernameValidation implements InputValidation
+public class UsernameValidation extends AbstractInputValidation
 {
     private final int DEFAULT_MINIMUM_LENGTH = 3;
     private InputValidation mv;
@@ -20,14 +20,15 @@ public class UsernameValidation implements InputValidation
     }
 
     @Override
-    public boolean validateInput(String input) throws ValidationException
+    public boolean validateInput(String input)
     {
         mv.validateInput(input);
 
         /*
         if(does not exist in database)
         {
-            throw new ValidationException("Username does not exists!");
+            validationMessage = "Username does not exists!";
+            return false;
         }
          */
         return true;

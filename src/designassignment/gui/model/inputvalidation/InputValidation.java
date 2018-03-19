@@ -11,5 +11,7 @@ package designassignment.gui.model.inputvalidation;
  */
 public interface InputValidation
 {
-    public boolean validateInput(String input) throws ValidationException;
+    public boolean validateInput(String input);
+
+    public String getValidationMessage();
 }

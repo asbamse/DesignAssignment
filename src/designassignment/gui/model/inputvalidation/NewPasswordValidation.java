@@ -9,7 +9,7 @@ package designassignment.gui.model.inputvalidation;
  *
  * @author Asbamz
  */
-public class NewPasswordValidation implements InputValidation
+public class NewPasswordValidation extends AbstractInputValidation
 {
     private final int DEFAULT_MINIMUM_LENGTH = 8;
     private InputValidation mv;
@@ -20,7 +20,7 @@ public class NewPasswordValidation implements InputValidation
     }
 
     @Override
-    public boolean validateInput(String input) throws ValidationException
+    public boolean validateInput(String input)
     {
         mv.validateInput(input);
 
