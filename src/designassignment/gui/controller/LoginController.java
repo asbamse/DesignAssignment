@@ -5,6 +5,7 @@
  */
 package designassignment.gui.controller;
 
+import designassignment.bll.BLLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import designassignment.gui.model.LoginModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class

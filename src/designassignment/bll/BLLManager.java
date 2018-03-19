@@ -9,7 +9,6 @@ import designassignment.be.Message;
 import designassignment.dal.DALException;
 import designassignment.dal.DALFacade;
 import designassignment.dal.DALManager;
-import designassignment.dal.DALManagerXML;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -101,7 +100,11 @@ public class BLLManager implements BLLFacade {
             
             String encryptedPassword = hexString.toString();
             
-            dal.addUser(email, email, encryptedPassword);
+            try {
+                dal.addUser(email, email, encryptedPassword);
+            } catch (DALException ex) {
+                throw new BLLException(ex.getMessage(), ex.getCause());
+            }
         } 
         catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(BLLManager.class.getName()).log(Level.SEVERE, null, ex);
