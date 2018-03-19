@@ -121,7 +121,7 @@ public class DB_DAO implements DAO
     public User addUser(String Name, String Email, String password) throws DALException {
         try (Connection con = connecter.getConnection())
         {
-            String sql = "INSERT INTO User VALUES (?), (?), (?)";
+            String sql = "INSERT INTO User VALUES (?, ?, ?)";
 
             PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, Name);
