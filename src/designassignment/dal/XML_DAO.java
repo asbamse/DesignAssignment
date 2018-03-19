@@ -10,6 +10,7 @@ import designassignment.be.MessageWrapper;
 import designassignment.be.User;
 import java.io.File;
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
