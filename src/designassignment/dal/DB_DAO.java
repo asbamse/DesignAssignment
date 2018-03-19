@@ -79,7 +79,7 @@ public class DB_DAO implements DAO
     {
         try (Connection con = connecter.getConnection())
         {
-            String sql = "INSERT INTO Message VALUES (?), (?)";
+            String sql = "INSERT INTO Message VALUES (?, ?)";
 
             PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, message);
@@ -95,6 +95,7 @@ public class DB_DAO implements DAO
         }
         catch (SQLException ex)
         {
+            
             throw new DALException(ex.getMessage(), ex.getCause());
         }
     }
