@@ -33,4 +33,13 @@ public interface BLLFacade
      * @throws BLLException 
      */
     public void deleteMessage(Message thisMessage)throws BLLException;
+    
+    /**
+     * Creates a new user and encrypts the password.
+     * @param username
+     * @param email
+     * @param password
+     * @throws BLLException 
+     */
+    public void createUser(String username, String email, String password) throws BLLException;
 }

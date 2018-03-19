@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import designassignment.gui.model.LoginModel;
+
 /**
  * FXML Controller class
  *
@@ -28,14 +30,18 @@ public class LoginController implements Initializable {
     private Label lblEMail;
     @FXML
     private TextField txtfieldEMail;
+    
+    private LoginModel model;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        model = new LoginModel();
         lblEMail.setVisible(false);
         txtfieldEMail.setVisible(false);
+        txtfieldEMail.setDisable(true);
     }
 
     @FXML
@@ -48,9 +54,12 @@ public class LoginController implements Initializable {
         if (txtfieldEMail.getText().isEmpty()) {
             lblEMail.setVisible(true);
             txtfieldEMail.setVisible(true);
+            txtfieldEMail.setDisable(false);
         }
-        else {
-            
+        else if (!txtfieldUsername.getText().isEmpty() 
+                && !txtfieldPassword.getText().isEmpty() 
+                && !txtfieldEMail.getText().isEmpty()){
+            model.createUser(txtfieldUsername.getText(), txtfieldPassword.getText(), txtfieldEMail.getText());
         }
     }
 
