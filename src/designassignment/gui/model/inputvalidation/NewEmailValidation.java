@@ -46,7 +46,7 @@ public class NewEmailValidation extends AbstractInputValidation
             validationMessage = "An email should have a local-part!";
             return false;
         }
-        if (!localpart.matches("[a-zA-z0-9\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~\\.]"))
+        if (!localpart.matches(".*[a-zA-z0-9\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~\\.]"))
         {
             validationMessage = "The local-part can only exist of a-z, A-z, 0-9 and these symbols !#$%&'*+-/=?^_`{|}~.]!";
             return false;
@@ -63,7 +63,7 @@ public class NewEmailValidation extends AbstractInputValidation
             validationMessage = "An email should have a domain!";
             return false;
         }
-        if (!domain.matches("[a-zA-z0-9\\-]"))
+        if (!domain.matches(".*[a-zA-z0-9\\-]"))
         {
             validationMessage = "The domain can only exist of a-z, A-z, 0-9 and - hyphen!";
             return false;
@@ -74,6 +74,7 @@ public class NewEmailValidation extends AbstractInputValidation
             return false;
         }
 
+        validationMessage = input + " validation succeeded!";
         return true;
     }
 }

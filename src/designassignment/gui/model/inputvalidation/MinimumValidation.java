@@ -37,6 +37,7 @@ public class MinimumValidation extends AbstractInputValidation
             return false;
         }
 
+        validationMessage = input + " validation succeeded!";
         return true;
     }
 }

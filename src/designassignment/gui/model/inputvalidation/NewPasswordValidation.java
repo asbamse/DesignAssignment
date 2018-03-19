@@ -24,6 +24,7 @@ public class NewPasswordValidation extends AbstractInputValidation
     {
         mv.validateInput(input);
 
+        validationMessage = input + " validation succeeded!";
         return true;
     }
 }
