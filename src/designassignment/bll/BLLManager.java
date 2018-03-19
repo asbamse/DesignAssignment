@@ -83,7 +83,7 @@ public class BLLManager implements BLLFacade {
             String encryptedPassword = encrypt(password);
             
             try {
-                dal.addUser(email, email, encryptedPassword);
+                dal.addUser(username, email, encryptedPassword);
             } catch (DALException ex) {
                 throw new BLLException(ex.getMessage(), ex.getCause());
             }
