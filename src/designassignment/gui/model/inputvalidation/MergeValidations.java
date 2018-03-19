@@ -27,6 +27,7 @@ public class MergeValidations extends AbstractInputValidation
         boolean second = SECOND.validateInput(input);
         if (first && second)
         {
+            validationMessage = input + " validation succeeded!";
             return true;
         }
         else if (first)

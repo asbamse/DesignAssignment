@@ -31,6 +31,7 @@ public class NewUsernameValidation extends AbstractInputValidation
             return false;
         }
          */
+        validationMessage = input + " validation succeeded!";
         return true;
     }
 }
