@@ -74,7 +74,7 @@ public class InputValidationFactory
                     throw new BLLException("InputValidationType not found!");
             }
 
-            for (int i = 0; i < types.length; i++)
+            for (int i = 1; i < types.length; i++)
             {
                 switch (types[i])
                 {
@@ -102,6 +102,10 @@ public class InputValidationFactory
             }
         }
 
+        if (mutant == null)
+        {
+            throw new BLLException("No types!");
+        }
         return mutant;
     }
 }
