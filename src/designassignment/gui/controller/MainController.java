@@ -106,6 +106,10 @@ public class MainController implements Initializable
                                     text.setWrappingWidth(lstvwMessages.getWidth() - scrollWidth);
                                     setGraphic(text);
                                 }
+                                else
+                                {
+                                    setGraphic(null);
+                                }  
                                 
                             }
                         };
