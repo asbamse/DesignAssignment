@@ -102,10 +102,11 @@ public class MainController implements Initializable
                                 super.updateItem(item, empty);
                                 if (item != null)
                                 {
-                                    text = new Text(item.getMessage());
+                                    text = new Text(item.getUserId() + ": " + item.getMessage());
                                     text.setWrappingWidth(lstvwMessages.getWidth() - scrollWidth);
                                     setGraphic(text);
                                 }
+                                
                             }
                         };
                         return cell;
