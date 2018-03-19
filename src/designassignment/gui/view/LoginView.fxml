@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="designassignment.gui.controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="designassignment.gui.controller.LoginController">
     
     <stylesheets>
         <URL value="@css/MainCSS.css" />
@@ -45,7 +45,7 @@
         </rowConstraints>
          <children>
             <TextField fx:id="txtfieldUsername" GridPane.rowIndex="1" />
-            <TextField fx:id="txtfieldPassword" GridPane.rowIndex="4" />
+            <TextField fx:id="txtfieldPassword" accessibleRole="PASSWORD_FIELD" GridPane.rowIndex="4" />
             <Label text="Username:" GridPane.halignment="LEFT" />
             <Label text="Password:" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="434.0" spacing="20.0" GridPane.rowIndex="6">

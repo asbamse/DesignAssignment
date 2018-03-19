@@ -6,9 +6,19 @@
 package designassignment.gui.model;
 
 import designassignment.bll.BLLException;
+import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
@@ -16,7 +26,7 @@ import javafx.scene.control.ButtonType;
  */
 public class LoginModel {
 
-    private BLLManager bll;
+    private BLLFacade bll;
 
     public LoginModel() {
         bll = BLLManager.getInstance();
@@ -28,6 +38,29 @@ public class LoginModel {
         } catch (BLLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
             alert.showAndWait();
+        }
+    }
+
+    public void login(String username, TextField password) {
+        try {
+            
+            bll.login(username, password.getText());
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) password.getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.setTitle("CHat");
+            
+            
+            
+        } catch (BLLException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

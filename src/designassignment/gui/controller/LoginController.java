@@ -49,6 +49,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private void handleSignIn(ActionEvent event) {
+        
+        model.login(txtfieldUsername.getText(), txtfieldPassword);
+        
 
     }
 

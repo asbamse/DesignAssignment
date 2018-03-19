@@ -37,6 +37,6 @@ public interface DAO
 
     public User addUser(String Name, String Email, String password)throws DALException;
 
-    public User login(String Email, String password)throws DALException;
+    public User login(String username, String password)throws DALException;
 
 }

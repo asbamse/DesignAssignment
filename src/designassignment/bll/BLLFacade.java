@@ -42,4 +42,6 @@ public interface BLLFacade
      * @throws BLLException 
      */
     public void createUser(String username, String email, String password) throws BLLException;
+
+    public void login(String username, String password) throws BLLException;
 }

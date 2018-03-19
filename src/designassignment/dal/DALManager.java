@@ -78,8 +78,8 @@ public class DALManager implements DALFacade
     }
 
     @Override
-    public User userLogin(String Email, String password) throws DALException {
-        currentUser = dbdao.login(Email,password);
+    public User userLogin(String username, String password) throws DALException {
+        currentUser = dbdao.login(username,password);
         return currentUser;
     }
 

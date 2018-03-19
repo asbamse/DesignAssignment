@@ -79,9 +79,34 @@ public class BLLManager implements BLLFacade {
     @Override
     public void createUser(String username, String email, String password) throws BLLException {
         try {
-            String base = password;
+
+            String encryptedPassword = encrypt(password);
             
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            try {
+                dal.addUser(email, email, encryptedPassword);
+            } catch (DALException ex) {
+                throw new BLLException(ex.getMessage(), ex.getCause());
+            }
+        } 
+        catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+            Logger.getLogger(BLLManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void login(String username, String password) throws BLLException {
+        try {
+            
+            dal.userLogin(username, encrypt(password));
+            
+        } catch (DALException ex) {
+            throw new BLLException(ex.getMessage(), ex.getCause());
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+            Logger.getLogger(BLLManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private String encrypt(String base) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
             
             byte[] hash = digest.digest(base.getBytes("UTF-8"));
             
@@ -98,20 +123,7 @@ public class BLLManager implements BLLFacade {
                 hexString.append(hex);
             }
             
-            String encryptedPassword = hexString.toString();
-            
-            try {
-                dal.addUser(email, email, encryptedPassword);
-            } catch (DALException ex) {
-                throw new BLLException(ex.getMessage(), ex.getCause());
-            }
-        } 
-        catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(BLLManager.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(BLLManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            return hexString.toString();
     }
 
 }
