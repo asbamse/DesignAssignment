@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model.inputvalidation;
+package designassignment.bll.inputvalidationfactory;
 
 /**
  *
  * @author Asbamz
  */
-public interface InputValidation
+public enum InputValidationType
 {
-    public boolean validateInput(String input);
-
-    public String getValidationMessage();
+    MINIMUM, NEW_EMAIL, NEW_PASSWORD, NEW_USERNAME, PASSWORD, USERNAME;
 }

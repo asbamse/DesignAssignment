@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model.inputvalidationfactory;
+package designassignment.bll.inputvalidationfactory;
 
 import designassignment.bll.BLLException;
-import designassignment.gui.model.inputvalidation.InputValidation;
-import designassignment.gui.model.inputvalidation.MergeValidations;
+import designassignment.bll.inputvalidation.InputValidation;
+import designassignment.bll.inputvalidation.MergeValidations;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

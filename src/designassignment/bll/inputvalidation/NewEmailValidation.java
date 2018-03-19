@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model.inputvalidation;
+package designassignment.bll.inputvalidation;
 
 /**
  *
@@ -23,7 +23,13 @@ public class NewEmailValidation extends AbstractInputValidation
     @Override
     public boolean validateInput(String input)
     {
-        mv.validateInput(input);
+        boolean min = mv.validateInput(input);
+
+        if (!min)
+        {
+            validationMessage = mv.getValidationMessage();
+            return false;
+        }
 
         if (!input.contains(AT_SYMBOL))
         {

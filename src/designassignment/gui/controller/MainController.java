@@ -83,8 +83,6 @@ public class MainController implements Initializable
                     }
                 }
 
-                System.out.println(lstvwMessages.getWidth());
-                System.out.println(scrollbarWidth);
                 final double finalScrollbarWidth = scrollbarWidth;
                 lstvwMessages.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>()
                 {
@@ -109,8 +107,8 @@ public class MainController implements Initializable
                                 else
                                 {
                                     setGraphic(null);
-                                }  
-                                
+                                }
+
                             }
                         };
                         return cell;

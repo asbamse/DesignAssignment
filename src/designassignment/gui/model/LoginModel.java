@@ -24,28 +24,36 @@ import javafx.stage.Stage;
  *
  * @author alexl
  */
-public class LoginModel {
+public class LoginModel
+{
 
     private BLLFacade bll;
 
-    public LoginModel() {
+    public LoginModel()
+    {
         bll = BLLManager.getInstance();
     }
 
-    public void createUser(String username, String password, String email) {
-        try {
+    public void createUser(String username, String password, String email)
+    {
+        try
+        {
             bll.createUser(username, email, password);
-        } catch (BLLException ex) {
+        }
+        catch (BLLException ex)
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
             alert.showAndWait();
         }
     }
 
-    public void login(String username, TextField password) {
-        try {
-            
+    public void login(String username, TextField password)
+    {
+        try
+        {
+
             bll.login(username, password.getText());
-            
+
             Parent root = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
 
             Scene scene = new Scene(root);
@@ -53,14 +61,12 @@ public class LoginModel {
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.setTitle("CHat");
-            
-            
-            
-        } catch (BLLException ex) {
+
+        }
+        catch (BLLException | IOException ex)
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
             alert.showAndWait();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

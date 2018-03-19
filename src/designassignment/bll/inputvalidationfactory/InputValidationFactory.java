@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package designassignment.gui.model.inputvalidationfactory;
+package designassignment.bll.inputvalidationfactory;
 
 import designassignment.bll.BLLException;
-import designassignment.gui.model.inputvalidation.InputValidation;
-import designassignment.gui.model.inputvalidation.MergeValidations;
-import designassignment.gui.model.inputvalidation.MinimumValidation;
-import designassignment.gui.model.inputvalidation.NewEmailValidation;
-import designassignment.gui.model.inputvalidation.NewPasswordValidation;
-import designassignment.gui.model.inputvalidation.NewUsernameValidation;
-import designassignment.gui.model.inputvalidation.PasswordValidation;
-import designassignment.gui.model.inputvalidation.UsernameValidation;
+import designassignment.bll.inputvalidation.InputValidation;
+import designassignment.bll.inputvalidation.MergeValidations;
+import designassignment.bll.inputvalidation.MinimumValidation;
+import designassignment.bll.inputvalidation.NewEmailValidation;
+import designassignment.bll.inputvalidation.NewPasswordValidation;
+import designassignment.bll.inputvalidation.NewUsernameValidation;
+import designassignment.bll.inputvalidation.PasswordValidation;
+import designassignment.bll.inputvalidation.UsernameValidation;
 
 /**
  *
