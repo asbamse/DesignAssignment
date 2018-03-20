@@ -10,6 +10,9 @@ import designassignment.be.User;
 import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
+import designassignment.bll.inputvalidation.InputValidation;
+import designassignment.bll.inputvalidationfactory.InputValidationFactory;
+import designassignment.bll.inputvalidationfactory.InputValidationType;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -50,10 +53,20 @@ public class MainModel
     {
         try
         {
-            Message tmp = bll.sendMessage(message);
-            messages.add(tmp);
-            getAllMessages();
-            return tmp;
+            InputValidation iv = InputValidationFactory.CreateInputValidation(InputValidationType.MINIMUM);
+            if (iv.validateInput(message))
+            {
+                Message tmp = bll.sendMessage(message);
+                messages.add(tmp);
+                getAllMessages();
+                return tmp;
+            }
+            else
+            {
+                Alert alert = new Alert(Alert.AlertType.WARNING, iv.getValidationMessage(), ButtonType.OK);
+                alert.showAndWait();
+                return null;
+            }
         }
         catch (BLLException ex)
         {
@@ -100,7 +113,8 @@ public class MainModel
         }
     }
 
-    public User getCurrentUser() {
+    public User getCurrentUser()
+    {
         return bll.getCurrentUser();
     }
 }

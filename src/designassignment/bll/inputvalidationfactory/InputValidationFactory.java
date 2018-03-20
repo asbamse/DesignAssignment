@@ -21,7 +21,7 @@ import designassignment.bll.inputvalidation.UsernameValidation;
  */
 public class InputValidationFactory
 {
-    private static final int MINIMUM_LENGTH = 8;
+    private static final int MINIMUM_LENGTH = 1;
 
     public static InputValidation CreateInputValidation(InputValidationType type) throws BLLException
     {
