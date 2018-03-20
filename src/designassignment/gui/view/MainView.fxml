@@ -10,13 +10,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="328.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="designassignment.gui.controller.MainController">
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="423.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="designassignment.gui.controller.MainController">
     <children>
         <ListView fx:id="lstvwMessages" layoutX="53.0" layoutY="-6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
         <Button layoutX="240.0" layoutY="254.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleSend" prefHeight="30.0" text="Send" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="5.0" />
-        <TextField fx:id="txtfldMessage" layoutX="43.0" layoutY="242.0" onAction="#handleSend" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="65.0" />
-      <ButtonBar layoutX="14.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+        <TextField fx:id="txtfldMessage" layoutX="43.0" layoutY="242.0" onAction="#handleSend" prefHeight="31.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="65.0" />
+      <ButtonBar layoutX="14.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
         <buttons>
           <Button fx:id="btnRedo" minWidth="14.0" mnemonicParsing="false" onAction="#handleRedo" prefHeight="31.0">
                <graphic>
@@ -42,6 +43,11 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ButtonBar>
+      <Button layoutX="310.0" layoutY="7.0" minWidth="14.0" mnemonicParsing="false" onAction="#refreshAction" prefHeight="31.0" prefWidth="70.0" text="Refresh" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
     </children>
     <stylesheets>
         <URL value="@css/MainCSS.css" />

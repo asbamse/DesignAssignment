@@ -182,4 +182,9 @@ public class MainController implements Initializable
             undoStack.pop().undo();
         }
     }
+
+    @FXML
+    private void refreshAction(ActionEvent event) {
+        mm.getAllMessages();
+    }
 }

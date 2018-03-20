@@ -62,7 +62,7 @@ public class MainModel
         }
     }
 
-    private void getAllMessages()
+    public void getAllMessages()
     {
         messages.clear();
         try
