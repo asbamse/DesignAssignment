@@ -104,7 +104,13 @@ public class MainModel
         try
         {
             bll.deleteMessage(thisMessage);
-            messages.remove(thisMessage);
+            
+            for (int i = 0; i < messages.size(); i++) {
+                if (messages.get(i).getId() == thisMessage.getId()){
+                    messages.remove(i);
+                }
+            }
+            
         }
         catch (BLLException ex)
         {
