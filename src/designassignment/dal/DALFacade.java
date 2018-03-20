@@ -50,4 +50,6 @@ public interface DALFacade
      * @return mathcing user with same password and email
      */
     public User userLogin(String username, String password) throws DALException;
+
+    public User getCurrentUser();
 }

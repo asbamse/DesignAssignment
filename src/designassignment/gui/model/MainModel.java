@@ -6,6 +6,7 @@
 package designassignment.gui.model;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
@@ -97,5 +98,9 @@ public class MainModel
             Alert alert = new Alert(Alert.AlertType.WARNING, "Could not delete message!: " + ex.getMessage(), ButtonType.OK);
             alert.showAndWait();
         }
+    }
+
+    public User getCurrentUser() {
+        return bll.getCurrentUser();
     }
 }

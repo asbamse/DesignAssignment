@@ -26,6 +26,7 @@ import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Callback;
 
 /**
@@ -103,6 +104,9 @@ public class MainController implements Initializable
                                     text = new Text(item.getUserId() + ": " + item.getMessage());
                                     text.setWrappingWidth(lstvwMessages.getWidth() - scrollWidth);
                                     setGraphic(text);
+                                    if (item.getUserId() == mm.getCurrentUser().getId()){
+                                        text.setTextAlignment(TextAlignment.RIGHT);
+                                    }
                                 }
                                 else
                                 {

@@ -6,6 +6,7 @@
 package designassignment.bll;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import designassignment.bll.inputvalidation.InputValidation;
 import designassignment.bll.inputvalidationfactory.InputValidationFactory;
 import designassignment.bll.inputvalidationfactory.InputValidationType;
@@ -162,6 +163,11 @@ public class BLLManager implements BLLFacade
         }
 
         return hexString.toString();
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return dal.getCurrentUser();
     }
 
 }

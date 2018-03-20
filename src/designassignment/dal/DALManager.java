@@ -83,4 +83,9 @@ public class DALManager implements DALFacade
         return currentUser;
     }
 
+    @Override
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
 }

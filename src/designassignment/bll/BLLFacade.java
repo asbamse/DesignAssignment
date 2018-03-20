@@ -6,6 +6,7 @@
 package designassignment.bll;
 
 import designassignment.be.Message;
+import designassignment.be.User;
 import java.util.List;
 
 /**
@@ -44,4 +45,6 @@ public interface BLLFacade
     public void createUser(String username, String email, String password) throws BLLException;
 
     public void login(String username, String password) throws BLLException;
+
+    public User getCurrentUser();
 }
