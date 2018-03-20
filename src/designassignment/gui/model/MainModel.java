@@ -51,6 +51,7 @@ public class MainModel
         {
             Message tmp = bll.sendMessage(message);
             messages.add(tmp);
+            getAllMessages();
             return tmp;
         }
         catch (BLLException ex)
