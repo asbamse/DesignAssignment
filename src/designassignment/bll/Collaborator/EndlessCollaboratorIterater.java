@@ -13,10 +13,13 @@ import java.util.List;
  *
  * @author janvanzetten
  */
-public class EndlessCollaboratorIterater implements Iterator{
-
+public class EndlessCollaboratorIterater implements Iterator<User>{
+    
+    List<User> collaborators;
+    int currentIndex;
+ 
     public EndlessCollaboratorIterater(List<User> collaborators) {
-        
+        this.collaborators = collaborators;
     }
     
     @Override
@@ -25,8 +28,16 @@ public class EndlessCollaboratorIterater implements Iterator{
     }
 
     @Override
-    public Object next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User next() {
+        currentIndex++;
+        
+        
+        if (currentIndex >= collaborators.size()){
+            currentIndex = 0;
+        }
+        
+        return collaborators.get(currentIndex);
+        
     }
     
 }
