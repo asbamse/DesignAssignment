@@ -6,6 +6,7 @@
 package designassignment.bll.Collaborator;
 
 import designassignment.be.User;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author janvanzetten
  */
-public class EndlessCollaboratorIterater implements Iterator<User>{
+public class EndlessCollaboratorIterater implements IteratorWithMultiNext<User>{
     
     List<User> collaborators;
     int currentIndex = 0;
@@ -21,23 +22,20 @@ public class EndlessCollaboratorIterater implements Iterator<User>{
     public EndlessCollaboratorIterater(List<User> collaborators) {
         this.collaborators = collaborators;
     }
-    
-    @Override
-    public boolean hasNext() {
-        return true;
-    }
 
     @Override
-    public User next() {
-        currentIndex++;
-        
-        
-        if (currentIndex >= collaborators.size()){
-            currentIndex = 0;
+    public List<User> next(int count) {
+        int startIndex = currentIndex;
+        boolean first = true;
+        List<User> nextColabs = new ArrayList<>();
+        while(currentIndex <= startIndex + count && (first||currentIndex == startIndex)){
+            nextColabs.add(collaborators.get(currentIndex));
+            
+            first = false;
         }
-        
-        return collaborators.get(currentIndex);
-        
+        return nextColabs;
     }
+    
+    
     
 }
