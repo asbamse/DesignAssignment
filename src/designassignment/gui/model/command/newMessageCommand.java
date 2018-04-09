@@ -6,32 +6,44 @@
 package designassignment.gui.model.command;
 
 import designassignment.be.Message;
+import designassignment.bll.CommandException;
+import designassignment.bll.GUIException;
 import designassignment.gui.model.MainModel;
 
 /**
  *
  * @author janvanzetten
  */
-public class newMessageCommand implements Command{
-    
+public class newMessageCommand implements Command
+{
+
     private String messageText;
     private Message thisMessage;
     private MainModel mainModel;
 
-    public newMessageCommand(String messageText, MainModel mModel) {
+    public newMessageCommand(String messageText, MainModel mModel)
+    {
         this.messageText = messageText;
         mainModel = mModel;
     }
 
     @Override
-    public void execute() {
-        thisMessage = mainModel.sendMessage(messageText);
+    public void execute() throws CommandException
+    {
+        try
+        {
+            thisMessage = mainModel.sendMessage(messageText);
+        }
+        catch (GUIException ex)
+        {
+            throw new CommandException(ex.getMessage(), ex.getCause());
+        }
     }
 
     @Override
-    public void undo() {
+    public void undo() throws CommandException
+    {
         mainModel.deleteMessage(thisMessage);
     }
-    
-  
+
 }
