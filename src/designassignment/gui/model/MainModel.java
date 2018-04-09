@@ -10,6 +10,7 @@ import designassignment.be.User;
 import designassignment.bll.BLLException;
 import designassignment.bll.BLLFacade;
 import designassignment.bll.BLLManager;
+import designassignment.bll.GUIException;
 import designassignment.bll.inputvalidation.InputValidation;
 import designassignment.bll.inputvalidationfactory.InputValidationFactory;
 import designassignment.bll.inputvalidationfactory.InputValidationType;
@@ -49,7 +50,7 @@ public class MainModel
      * @param message
      * @return
      */
-    public Message sendMessage(String message)
+    public Message sendMessage(String message) throws GUIException
     {
         try
         {
@@ -63,16 +64,12 @@ public class MainModel
             }
             else
             {
-                Alert alert = new Alert(Alert.AlertType.WARNING, iv.getValidationMessage(), ButtonType.OK);
-                alert.showAndWait();
-                return null;
+                throw new GUIException(iv.getValidationMessage());
             }
         }
         catch (BLLException ex)
         {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Could not send message!: " + ex.getMessage(), ButtonType.OK);
-            alert.showAndWait();
-            return null;
+            throw new GUIException(ex.getMessage(), ex.getCause());
         }
     }
 
@@ -104,9 +101,9 @@ public class MainModel
         try
         {
             bll.deleteMessage(thisMessage);
-            
+
             getAllMessages();
-            
+
         }
         catch (BLLException ex)
         {

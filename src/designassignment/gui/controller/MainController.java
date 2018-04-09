@@ -7,6 +7,7 @@ package designassignment.gui.controller;
 
 import designassignment.be.Message;
 import designassignment.bll.BLLException;
+import designassignment.bll.CommandException;
 import designassignment.gui.model.command.Command;
 import designassignment.gui.model.MainModel;
 import designassignment.gui.model.command.newMessageCommand;
@@ -20,7 +21,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollBar;
@@ -186,8 +189,18 @@ public class MainController implements Initializable
     {
         if (!redoStack.empty())
         {
-            undoStack.push(redoStack.peek());
-            redoStack.pop().execute();
+            Command redo = redoStack.pop();
+            try
+            {
+                redo.execute();
+                undoStack.push(redo);
+            }
+            catch (CommandException ex)
+            {
+                redoStack.push(redo);
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Could not redo message!: " + ex.getMessage(), ButtonType.OK);
+                alert.showAndWait();
+            }
         }
     }
 
@@ -196,8 +209,18 @@ public class MainController implements Initializable
     {
         if (!undoStack.empty())
         {
-            redoStack.push(undoStack.peek());
-            undoStack.pop().undo();
+            Command undo = undoStack.pop();
+            try
+            {
+                undo.undo();
+                redoStack.push(undo);
+            }
+            catch (CommandException ex)
+            {
+                undoStack.push(undo);
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Could not undo message!: " + ex.getMessage(), ButtonType.OK);
+                alert.showAndWait();
+            }
         }
     }
 
@@ -225,8 +248,16 @@ public class MainController implements Initializable
     private void sendMessage() throws BLLException
     {
         Command message = new newMessageCommand(txtareaMessage.getText(), mm);
-        message.execute();
-        undoStack.push(message);
-        redoStack.clear();
+        try
+        {
+            message.execute();
+            undoStack.push(message);
+            redoStack.clear();
+        }
+        catch (CommandException ex)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Could not send message!: " + ex.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+        }
     }
 }

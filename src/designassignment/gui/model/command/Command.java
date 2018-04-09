@@ -5,16 +5,17 @@
  */
 package designassignment.gui.model.command;
 
+import designassignment.bll.CommandException;
+
 /**
  *
  * @author janvanzetten
  */
-public interface Command {
-    
-     
-    
-    public void execute();
-    
-    public void undo();
-    
+public interface Command
+{
+
+    public void execute() throws CommandException;
+
+    public void undo() throws CommandException;
+
 }
