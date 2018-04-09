@@ -16,7 +16,7 @@ import java.util.List;
 public class EndlessCollaboratorIterater implements Iterator<User>{
     
     List<User> collaborators;
-    int currentIndex;
+    int currentIndex = 0;
  
     public EndlessCollaboratorIterater(List<User> collaborators) {
         this.collaborators = collaborators;
