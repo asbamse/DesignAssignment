@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class EndlessCollaboratorIterater implements IteratorWithMultiNext<User>{
     
-    List<User> collaborators;
-    int currentIndex = 0;
+    private List<User> collaborators;
+    private int currentIndex = 0;
  
     public EndlessCollaboratorIterater(List<User> collaborators) {
         this.collaborators = collaborators;
@@ -31,7 +31,16 @@ public class EndlessCollaboratorIterater implements IteratorWithMultiNext<User>{
         int startIndex = currentIndex;
         boolean first = true;
         List<User> nextColabs = new ArrayList<>();
-        while(currentIndex <= startIndex + count && (first||currentIndex == startIndex)){
+        
+        int stopMark;
+        if (startIndex + count >= collaborators.size()){
+            stopMark = startIndex + count - collaborators.size();
+        }
+        else{
+            stopMark = startIndex + count;
+        }
+        
+        while(currentIndex != stopMark && (first||currentIndex != startIndex)){
             nextColabs.add(collaborators.get(currentIndex));
             
             first = false;
@@ -51,7 +60,16 @@ public class EndlessCollaboratorIterater implements IteratorWithMultiNext<User>{
         int startIndex = currentIndex;
         boolean first = true;
         List<User> nextColabs = new ArrayList<>();
-        while(currentIndex <= startIndex - count && (first||currentIndex == startIndex)){
+        
+        int stopMark;
+        if (startIndex - count < 0){
+            stopMark = collaborators.size()+startIndex - count;
+        }
+        else{
+            stopMark = startIndex - count;
+        }
+        
+        while(currentIndex != stopMark && (first||currentIndex != startIndex)){
             nextColabs.add(collaborators.get(currentIndex));
             
             first = false;
