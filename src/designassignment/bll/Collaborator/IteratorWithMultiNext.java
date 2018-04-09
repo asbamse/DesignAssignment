@@ -14,7 +14,14 @@ import java.util.List;
  */
 public interface IteratorWithMultiNext<E>{
     
+    
+    /**
+     * get the next bunch of collaborators
+     * @param count the amount of collaborators
+     * @return
+     * @throws BLLException 
+     */
     public List<E> next(int count) throws BLLException;
     
-    
+    public List<E> previous(int count) throws BLLException;
 }
