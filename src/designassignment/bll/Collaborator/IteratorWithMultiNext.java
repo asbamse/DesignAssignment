@@ -5,6 +5,7 @@
  */
 package designassignment.bll.Collaborator;
 
+import designassignment.bll.BLLException;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface IteratorWithMultiNext<E>{
     
-    public List<E> next(int count);
+    public List<E> next(int count) throws BLLException;
     
     
 }
