@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 import designassignment.gui.model.UserModel;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -33,7 +34,17 @@ public class UserViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         model = new UserModel();
         model.createUserList();
-        model.setList(listviewUsers);
+        model.setList(listviewUsers, true);
     }    
+
+    @FXML
+    private void handlePreviousButton(ActionEvent event) {
+        model.setList(listviewUsers, true);
+    }
+
+    @FXML
+    private void handleNextButton(ActionEvent event) {
+        model.setList(listviewUsers, false);
+    }
     
 }
