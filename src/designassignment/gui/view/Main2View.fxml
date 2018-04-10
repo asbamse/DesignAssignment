@@ -7,27 +7,27 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@css/MainCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="designassignment.gui.controller.Main2Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@css/MainCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="designassignment.gui.controller.Main2Controller">
    <children>
       <Label fx:id="lblProgramName" alignment="CENTER" maxHeight="40.0" maxWidth="160.0" minHeight="40.0" minWidth="160.0" prefHeight="40.0" prefWidth="160.0" text="CHat" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <ButtonBar maxHeight="40.0" minHeight="40.0" prefHeight="40.0" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <buttons>
-            <Button maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handleOptions" prefHeight="38.0" text="Options">
+            <Button fx:id="btnOptions" maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handleOptions" prefHeight="38.0" text="Options">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-          <Button maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handlePersonalLogs" prefHeight="38.0" text="Personal Logs">
+          <Button fx:id="btnPersonalLogs" maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handlePersonalLogs" prefHeight="38.0" text="Personal Logs">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handleSharedLogs" prefHeight="38.0" text="Shared Logs">
+            <Button fx:id="btnSharedLogs" maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handleSharedLogs" prefHeight="38.0" text="Shared Logs">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handleCollaborators" prefHeight="38.0" text="Collaborators">
+            <Button fx:id="btnCollaborators" maxHeight="38.0" minHeight="38.0" mnemonicParsing="false" onAction="#handleCollaborators" prefHeight="38.0" text="Collaborators">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
