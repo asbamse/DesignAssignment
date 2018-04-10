@@ -169,5 +169,10 @@ public class BLLManager implements BLLFacade
     public User getCurrentUser() {
         return dal.getCurrentUser();
     }
+    
+    @Override
+    public List<User> getAllUsers() throws DALException {
+        return dal.getAllUsers();
+    }
 
 }

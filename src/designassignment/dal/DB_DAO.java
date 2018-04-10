@@ -168,5 +168,35 @@ public class DB_DAO implements DAO
             throw new DALException(ex.getMessage(), ex.getCause());
         }
     }
+    
+    @Override
+    public List<User> getAllUsers() throws DALException
+    {
+        try (Connection con = connecter.getConnection())
+        {
+            String sql = "SELECT * FROM User";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            List<User> users = new ArrayList<>();
+
+            while (rs.next())
+            {
+
+                User user = new User(rs.getInt("Id"), rs.getString("Name"), rs.getString("Email"));
+
+                users.add(user);
+
+            }
+
+            return users;
+
+        }
+        catch (SQLException ex)
+        {
+            throw new DALException(ex.getMessage(), ex.getCause());
+        }
+    }
 
 }

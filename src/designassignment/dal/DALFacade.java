@@ -52,4 +52,6 @@ public interface DALFacade
     public User userLogin(String username, String password) throws DALException;
 
     public User getCurrentUser();
+    
+    public List<User> getAllUsers() throws DALException;
 }

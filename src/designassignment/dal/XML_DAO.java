@@ -193,4 +193,9 @@ public class XML_DAO implements DAO
     public User login(String Email, String password) throws DALException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<User> getAllUsers() throws DALException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

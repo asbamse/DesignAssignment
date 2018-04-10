@@ -7,6 +7,7 @@ package designassignment.bll;
 
 import designassignment.be.Message;
 import designassignment.be.User;
+import designassignment.dal.DALException;
 import java.util.List;
 
 /**
@@ -47,4 +48,6 @@ public interface BLLFacade
     public void login(String username, String password) throws BLLException;
 
     public User getCurrentUser();
+    
+    public List<User> getAllUsers() throws DALException;
 }

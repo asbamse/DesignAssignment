@@ -82,4 +82,9 @@ public class DALManagerXML implements DALFacade
     public User getCurrentUser() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<User> getAllUsers() throws DALException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

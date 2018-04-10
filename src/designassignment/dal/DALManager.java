@@ -87,5 +87,10 @@ public class DALManager implements DALFacade
     public User getCurrentUser() {
         return currentUser;
     }
+    
+    @Override
+    public List<User> getAllUsers() throws DALException {
+        return dbdao.getAllUsers();
+    }
 
 }
