@@ -95,7 +95,7 @@ public class DB_DAO implements DAO
         }
         catch (SQLException ex)
         {
-            
+
             throw new DALException(ex.getMessage(), ex.getCause());
         }
     }
@@ -119,7 +119,8 @@ public class DB_DAO implements DAO
     }
 
     @Override
-    public User addUser(String name, String email, String password) throws DALException {
+    public User addUser(String name, String email, String password) throws DALException
+    {
         try (Connection con = connecter.getConnection())
         {
             String sql = "INSERT INTO [User] VALUES( ?, ?, ?);";
@@ -128,7 +129,7 @@ public class DB_DAO implements DAO
             statement.setString(1, name);
             statement.setString(2, email);
             statement.setString(3, password);
-            
+
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
@@ -144,7 +145,8 @@ public class DB_DAO implements DAO
     }
 
     @Override
-    public User login(String username, String password) throws DALException {
+    public User login(String username, String password) throws DALException
+    {
         try (Connection con = connecter.getConnection())
         {
             String sql = "SELECT * FROM [User] WHERE Name = ? AND Password = ?";
@@ -153,9 +155,9 @@ public class DB_DAO implements DAO
             statement.setString(1, username);
             statement.setString(2, password);
 
-
             ResultSet rs = statement.executeQuery();
-            if (!rs.next()){
+            if (!rs.next())
+            {
                 throw new DALException("The username or password is ivalid, create user if you do not have one.");
             }
             int id = rs.getInt(1);
@@ -168,13 +170,13 @@ public class DB_DAO implements DAO
             throw new DALException(ex.getMessage(), ex.getCause());
         }
     }
-    
+
     @Override
     public List<User> getAllUsers() throws DALException
     {
         try (Connection con = connecter.getConnection())
         {
-            String sql = "SELECT * FROM User";
+            String sql = "SELECT * FROM [User]";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

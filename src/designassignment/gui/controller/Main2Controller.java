@@ -62,20 +62,21 @@ public class Main2Controller implements Initializable
             panes[PANE_PERSONAL_LOGS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
             panes[PANE_SHARED_LOGS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
             panes[PANE_COLLABORATORS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/UserView.fxml"));
-            buttons[PANE_OPTIONS] = btnOptions;
-            buttons[PANE_PERSONAL_LOGS] = btnPersonalLogs;
-            buttons[PANE_SHARED_LOGS] = btnSharedLogs;
-            buttons[PANE_COLLABORATORS] = btnCollaborators;
-
-            for (int i = 0; i < 4; i++)
-            {
-                setupAnchor(panes[i]);
-            }
         }
         catch (IOException ex)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
             alert.showAndWait();
+        }
+
+        buttons[PANE_OPTIONS] = btnOptions;
+        buttons[PANE_PERSONAL_LOGS] = btnPersonalLogs;
+        buttons[PANE_SHARED_LOGS] = btnSharedLogs;
+        buttons[PANE_COLLABORATORS] = btnCollaborators;
+
+        for (int i = 0; i < 4; i++)
+        {
+            setupAnchor(panes[i]);
         }
 
         Platform.runLater(() ->
@@ -137,11 +138,14 @@ public class Main2Controller implements Initializable
 
     private void updateButton(Button btn)
     {
-        for (int i = 0; i < buttons.length; i++)
+        if (btn != null)
         {
-            buttons[i].setStyle("");
+            for (int i = 0; i < buttons.length; i++)
+            {
+                buttons[i].setStyle("");
+            }
+            btn.setStyle(btn.getStyle() + " -fx-background-color: #46a2f8, #3176b5; -fx-background-insets: 0, 1.5 1 0.25 0.5;");
         }
-        btn.setStyle(btn.getStyle() + " -fx-background-color: #46a2f8, #3176b5; -fx-background-insets: 0, 1.5 1 0.25 0.5;");
     }
 
     /**
@@ -150,9 +154,12 @@ public class Main2Controller implements Initializable
      */
     private void setupAnchor(Pane pane)
     {
-        AnchorPane.setTopAnchor(pane, 5.0);
-        AnchorPane.setBottomAnchor(pane, 5.0);
-        AnchorPane.setLeftAnchor(pane, 5.0);
-        AnchorPane.setRightAnchor(pane, 5.0);
+        if (pane != null)
+        {
+            AnchorPane.setTopAnchor(pane, 5.0);
+            AnchorPane.setBottomAnchor(pane, 5.0);
+            AnchorPane.setLeftAnchor(pane, 5.0);
+            AnchorPane.setRightAnchor(pane, 5.0);
+        }
     }
 }
