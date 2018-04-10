@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -26,15 +27,26 @@ import javafx.scene.layout.Pane;
  */
 public class Main2Controller implements Initializable
 {
+    private final int PANE_OPTIONS = 0;
+    private final int PANE_PERSONAL_LOGS = 1;
+    private final int PANE_SHARED_LOGS = 2;
+    private final int PANE_COLLABORATORS = 3;
+
     @FXML
     private Label lblProgramName;
     @FXML
     private AnchorPane paneTab;
+    @FXML
+    private Button btnOptions;
+    @FXML
+    private Button btnPersonalLogs;
+    @FXML
+    private Button btnSharedLogs;
+    @FXML
+    private Button btnCollaborators;
 
-    private Pane paneOptions;
-    private Pane panePersonalLogs;
-    private Pane paneSharedLogs;
-    private Pane paneCollaborators;
+    private Pane[] panes;
+    private Button[] buttons;
 
     /**
      * Initializes the controller class.
@@ -42,16 +54,23 @@ public class Main2Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        panes = new Pane[4];
+        buttons = new Button[4];
         try
         {
-            paneOptions = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
-            panePersonalLogs = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
-            paneSharedLogs = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
-            paneCollaborators = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
-            setupAnchor(paneOptions);
-            setupAnchor(panePersonalLogs);
-            setupAnchor(paneSharedLogs);
-            setupAnchor(paneCollaborators);
+            panes[PANE_OPTIONS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
+            panes[PANE_PERSONAL_LOGS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
+            panes[PANE_SHARED_LOGS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
+            panes[PANE_COLLABORATORS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
+            buttons[PANE_OPTIONS] = btnOptions;
+            buttons[PANE_PERSONAL_LOGS] = btnPersonalLogs;
+            buttons[PANE_SHARED_LOGS] = btnSharedLogs;
+            buttons[PANE_COLLABORATORS] = btnCollaborators;
+
+            for (int i = 0; i < 4; i++)
+            {
+                setupAnchor(panes[i]);
+            }
         }
         catch (IOException ex)
         {
@@ -61,7 +80,7 @@ public class Main2Controller implements Initializable
 
         Platform.runLater(() ->
         {
-            changePane(panePersonalLogs);
+            changePane(PANE_PERSONAL_LOGS);
         });
     }
 
@@ -72,7 +91,7 @@ public class Main2Controller implements Initializable
     @FXML
     private void handleOptions(ActionEvent event)
     {
-        changePane(paneOptions);
+        changePane(PANE_OPTIONS);
     }
 
     /**
@@ -82,7 +101,7 @@ public class Main2Controller implements Initializable
     @FXML
     private void handlePersonalLogs(ActionEvent event)
     {
-        changePane(panePersonalLogs);
+        changePane(PANE_PERSONAL_LOGS);
     }
 
     /**
@@ -92,7 +111,7 @@ public class Main2Controller implements Initializable
     @FXML
     private void handleSharedLogs(ActionEvent event)
     {
-        changePane(paneSharedLogs);
+        changePane(PANE_SHARED_LOGS);
     }
 
     /**
@@ -102,17 +121,27 @@ public class Main2Controller implements Initializable
     @FXML
     private void handleCollaborators(ActionEvent event)
     {
-        changePane(paneCollaborators);
+        changePane(PANE_COLLABORATORS);
     }
 
     /**
      * Switch to new pane.
      * @param pane
      */
-    private void changePane(Pane pane)
+    private void changePane(int pane)
     {
         paneTab.getChildren().clear();
-        paneTab.getChildren().add(pane);
+        paneTab.getChildren().add(panes[pane]);
+        updateButton(buttons[pane]);
+    }
+
+    private void updateButton(Button btn)
+    {
+        for (int i = 0; i < buttons.length; i++)
+        {
+            buttons[i].setStyle("");
+        }
+        btn.setStyle(btn.getStyle() + " -fx-background-color: #46a2f8, #3176b5; -fx-background-insets: 0, 1.5 1 0.25 0.5;");
     }
 
     /**
