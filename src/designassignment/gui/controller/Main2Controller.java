@@ -137,8 +137,11 @@ public class Main2Controller implements Initializable
 
     private void updateButton(Button btn)
     {
-        System.out.println(btn.getStyle());
-        btn.setStyle(btn.getStyle() + " -fx-background-color: white, #46a2f8; -fx-background-insets: 0, 0 0 3 0;");
+        for (int i = 0; i < buttons.length; i++)
+        {
+            buttons[i].setStyle("");
+        }
+        btn.setStyle(btn.getStyle() + " -fx-background-color: #00377F, #46a2f8; -fx-background-insets: 0, 1.5 0.5 0 0.5;");
     }
 
     /**
