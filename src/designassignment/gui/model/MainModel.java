@@ -29,6 +29,8 @@ public class MainModel
 {
     BLLFacade bll;
     private ObservableList<Message> messages;
+    Autoupdater aupdate;
+    
 
     /**
      * Main model constructor.
@@ -38,6 +40,8 @@ public class MainModel
         this.bll = BLLManager.getInstance();
         messages = FXCollections.observableArrayList();
         getAllMessages();
+        aupdate = new Autoupdater(this);
+        aupdate.setAsObserver();
     }
 
     public ObservableList<Message> getMessages()
