@@ -141,7 +141,7 @@ public class Main2Controller implements Initializable
         {
             buttons[i].setStyle("");
         }
-        btn.setStyle(btn.getStyle() + " -fx-background-color: #00377F, #46a2f8; -fx-background-insets: 0, 1.5 0.5 0 0.5;");
+        btn.setStyle(btn.getStyle() + " -fx-background-color: #46a2f8, #3176b5; -fx-background-insets: 0, 1.5 1 0.25 0.5;");
     }
 
     /**
