@@ -61,7 +61,7 @@ public class Main2Controller implements Initializable
             panes[PANE_OPTIONS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
             panes[PANE_PERSONAL_LOGS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
             panes[PANE_SHARED_LOGS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
-            panes[PANE_COLLABORATORS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/MainView.fxml"));
+            panes[PANE_COLLABORATORS] = FXMLLoader.load(getClass().getResource("/designassignment/gui/view/UserView.fxml"));
             buttons[PANE_OPTIONS] = btnOptions;
             buttons[PANE_PERSONAL_LOGS] = btnPersonalLogs;
             buttons[PANE_SHARED_LOGS] = btnSharedLogs;
