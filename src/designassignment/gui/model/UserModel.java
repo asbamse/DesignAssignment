@@ -29,25 +29,24 @@ public class UserModel {
     private BLLFacade bll;
     private List<VBoxCell> tbl;
     private EndlessCollaboratorIterater iter;
-    private ObservableList<VBoxCell> ol = FXCollections.observableArrayList();
+    private ObservableList<VBoxCell> ol;
 
     public UserModel() {
-        this.bll = BLLManager.getInstance();
-    }
-
-    public void createUserList() {
         try {
+            this.bll = BLLManager.getInstance();
+            tbl = new ArrayList<>();
             iter = new EndlessCollaboratorIterater(bll.getAllUsers());
+            ol = FXCollections.observableArrayList();
         } catch (DALException ex) {
             Logger.getLogger(UserModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+
     public void setList(ListView<VBoxCell> listviewUsers, boolean nextOrPrevious) {
         try {
             tbl.clear();
             ol.clear();
-            tbl = new ArrayList<>();
 
             if (nextOrPrevious == true) {
                 for (User user : iter.next(5)) {

@@ -14,6 +14,7 @@ import javafx.scene.control.ListView;
 
 import designassignment.gui.model.UserModel;
 import javafx.event.ActionEvent;
+import javafx.geometry.Orientation;
 
 /**
  * FXML Controller class
@@ -33,7 +34,7 @@ public class UserViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model = new UserModel();
-        model.createUserList();
+        listviewUsers.setOrientation(Orientation.HORIZONTAL);
         model.setList(listviewUsers, true);
     }    
 
