@@ -5,6 +5,7 @@
  */
 package designassignment;
 
+import designassignment.bll.ChangeChecker;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,6 +33,11 @@ public class DesignAssignment extends Application
 
         stage.setScene(scene);
         stage.show();
+    }
+    
+    @Override 
+    public void stop(){
+        ChangeChecker.stopTask();
     }
 
     /**

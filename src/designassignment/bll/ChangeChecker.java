@@ -11,6 +11,7 @@ import designassignment.dal.DBChangeDAO;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 
 /**
@@ -19,8 +20,10 @@ import javafx.concurrent.Task;
  */
 public class ChangeChecker extends Observable {
 
-    DBChangeDAO DBDAO;
-    int lastMessageId;
+    private DBChangeDAO DBDAO;
+    private int lastMessageId;
+    private static Thread thread;
+    private static boolean running = true;
 
     private final static long WAIT_TIME = 1000;
 
@@ -33,22 +36,24 @@ public class ChangeChecker extends Observable {
             Logger.getLogger(ChangeChecker.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Thread thread = new Thread(getTask());
+        thread = new Thread(getTask(Thread.currentThread()));
 
         thread.start();
     }
 
-    private Runnable getTask() {
+    private Runnable getTask(Thread fxThread) {
         Task task = new Task() {
             @Override
             protected Object call() throws Exception {
-                while (true) {
+                while (running) {
                     int messagesId = DBDAO.getNewstMessage();
                     System.out.println(messagesId);
                     if (messagesId != lastMessageId) {
                         //if the last message is not the same:
                         setChanged();
-                        notifyObservers();
+                        Platform.runLater(() -> {
+                            notifyObservers();
+                        });
                                 
                         lastMessageId = messagesId;
                         
@@ -57,9 +62,19 @@ public class ChangeChecker extends Observable {
                     
                     Thread.sleep(WAIT_TIME);
                 }
+                return null;
             }
         };
         return task;
+    }
+    
+    public static void stopTask(){
+        running = false;
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ChangeChecker.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
